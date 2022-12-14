@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>COCKTAIL DETAIL</title>
+</head>
+<body>
+<div>
+    <p>
+        <strong>no :</strong>
+        <span th:text="${cocktail.ctNo}"></span>
+    </p>
+    <p>
+        <strong>이름 :</strong>
+        <th:block th:text="${cocktail.ctName}"></th:block>
+    </p>
+    <p>
+        <strong>재료1 :</strong>
+        <th:block th:text="${cocktail.ingName1}"></th:block>
+        <th:block th:text="${cocktail.ingUnit1}"></th:block>
+    </p>
+    <p>
+        <strong>재료2 :</strong>
+        <th:block th:text="${cocktail.ingName2}"></th:block>
+        <th:block th:text="${cocktail.ingUnit2}"></th:block>
+    </p>
+    <p>
+        <strong>재료3 :</strong>
+    <th:block th:text="${cocktail.ingName3}"></th:block>
+    <th:block th:text="${cocktail.ingUnit3}"></th:block>
+    </p>
+    <p>
+        <strong>재료4 :</strong>
+    <th:block th:text="${cocktail.ingName4}"></th:block>
+    <th:block th:text="${cocktail.ingUnit4}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료5 :</strong>-->
+    <th:block th:text="${cocktail.ingName5}"></th:block>
+    <th:block th:text="${cocktail.ingUnit5}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료6 :</strong>-->
+    <th:block th:text="${cocktail.ingName6}"></th:block>
+    <th:block th:text="${cocktail.ingUnit6}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료7 :</strong>-->
+    <th:block th:text="${cocktail.ingName7}"></th:block>
+    <th:block th:text="${cocktail.ingUnit7}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료8 :</strong>-->
+    <th:block th:text="${cocktail.ingName8}"></th:block>
+    <th:block th:text="${cocktail.ingUnit8}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료9 :</strong>-->
+    <th:block th:text="${cocktail.ingName9}"></th:block>
+    <th:block th:text="${cocktail.ingUnit9}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료10 :</strong>-->
+    <th:block th:text="${cocktail.ingName10}"></th:block>
+    <th:block th:text="${cocktail.ingUnit10}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료11 :</strong>-->
+    <th:block th:text="${cocktail.ingName11}"></th:block>
+    <th:block th:text="${cocktail.ingUnit11}"></th:block>
+    </p>
+    <p>
+<!--        <strong>재료12 :</strong>-->
+    <th:block th:text="${cocktail.ingName12}"></th:block>
+    <th:block th:text="${cocktail.ingUnit12}"></th:block>
+    </p>
+    <p>
+        <strong>알코올 :</strong>
+    <th:block th:text="${cocktail.ctAlcohol}"></th:block>
+        <strong>알코올 단계 :</strong>
+    <th:block th:text="${cocktail.ctAlcoholClass}"></th:block>
+    </p>
+    <p>
+        <strong>맛 :</strong>
+    <th:block th:text="${cocktail.ctFlavorClass}"></th:block>
+    </p>
+    <p>
+        <strong>종류 :</strong>
+    <th:block th:text="${cocktail.ctKind}"></th:block>
+    </p>
+    <p>
+        <strong>계절 :</strong>
+    <th:block th:text="${cocktail.ctSeason}"></th:block>
+    </p>
+    <p>
+        <strong>시간 :</strong>
+    <th:block th:text="${cocktail.ctTime}"></th:block>
+    </p>
+
+    <p>
+        <strong>인증여부 :</strong>
+        <th:block th:text="${cocktail.ctCertified}"></th:block>
+    </p>
+
+</div>
+</body>
+</html>
