@@ -11,11 +11,9 @@
         th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         <td th:text="${cocktail.ctNo}"></td>
         <td th:text="${cocktail.ctName}"></td>
-        <td th:text="${cocktail.ctAlcohol}"></td>
-        <td th:text="${cocktail.ctAlcoholClass}"></td>
-        <td th:text="${cocktail.ctCertified}"></td>
     </tr>
     </tbody>
 </table>
+<nav th:include="cocktail/pageNav"></nav>
 </body>
 </html>
