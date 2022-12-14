@@ -1,4 +1,4 @@
-package com.cocktail.cocktail_recommendation.Repository;
+package com.cocktail.cocktail_recommendation.repository;
 
 import com.cocktail.cocktail_recommendation.dto.NewCocktailDto;
 import org.springframework.data.jpa.repository.JpaRepository;

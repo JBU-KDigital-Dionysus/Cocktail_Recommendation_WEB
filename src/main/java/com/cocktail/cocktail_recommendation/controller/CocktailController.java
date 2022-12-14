@@ -1,7 +1,7 @@
 package com.cocktail.cocktail_recommendation.controller;
 
 
-import com.cocktail.cocktail_recommendation.Repository.NewCocktailRepository;
+import com.cocktail.cocktail_recommendation.repository.NewCocktailRepository;
 
 import com.cocktail.cocktail_recommendation.dto.NewCocktailDto;
 import org.springframework.beans.factory.annotation.Autowired;
