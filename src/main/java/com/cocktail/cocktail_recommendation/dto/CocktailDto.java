@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="newcocktail")
+@Table(name="cocktail_total")
 public class CocktailDto {
 
     @Id

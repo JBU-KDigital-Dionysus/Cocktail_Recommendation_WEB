@@ -21,6 +21,8 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/cocktail")
 public class CocktailController {
+
+    @Autowired
     CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
