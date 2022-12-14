@@ -21,7 +21,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/cocktail")
 public class CocktailController {
-    @Autowired
     CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
@@ -38,10 +37,11 @@ public class CocktailController {
     @GetMapping("/list.do")
     public String list(Model model,
                        @RequestParam(defaultValue = "1") int page
-                       ) {
+    ) {
         final int ROWS = 20;
         Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").descending());
         Page<CocktailDto> cocktailList = newCocktailRepository.findAll(pageable);
+
         model.addAttribute("cocktailList", cocktailList);
         return "/cocktail/list";
     }
