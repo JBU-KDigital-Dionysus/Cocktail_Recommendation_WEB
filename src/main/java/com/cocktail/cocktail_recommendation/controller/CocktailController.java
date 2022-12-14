@@ -1,9 +1,9 @@
 package com.cocktail.cocktail_recommendation.controller;
 
 
-import com.cocktail.cocktail_recommendation.repository.NewCocktailRepository;
+import com.cocktail.cocktail_recommendation.repository.CocktailRepository;
 
-import com.cocktail.cocktail_recommendation.dto.NewCocktailDto;
+import com.cocktail.cocktail_recommendation.dto.CocktailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +24,11 @@ public class CocktailController {
     IngredientRepository ingredientRepository;*/
 
     @Autowired
-    NewCocktailRepository newCocktailRepository;
+    CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
     public String detail(@RequestParam(required = true) int ctNo, Model model) {
-        Optional<NewCocktailDto> newCocktailOpt = newCocktailRepository.findById(ctNo);
+        Optional<CocktailDto> newCocktailOpt = newCocktailRepository.findById(ctNo);
         if (newCocktailOpt.isPresent()) {
             model.addAttribute("cocktail", newCocktailOpt.get());
             return "cocktail/detail";
@@ -39,7 +39,7 @@ public class CocktailController {
 
     @GetMapping("/list.do")
     public String list(Model model) {
-        List<NewCocktailDto> cocktailList = newCocktailRepository.findAll();
+        List<CocktailDto> cocktailList = newCocktailRepository.findAll();
         model.addAttribute("cocktailList", cocktailList);
         return "/cocktail/list";
     }
