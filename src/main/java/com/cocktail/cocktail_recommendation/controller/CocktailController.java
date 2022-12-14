@@ -5,6 +5,10 @@ import com.cocktail.cocktail_recommendation.repository.CocktailRepository;
 
 import com.cocktail.cocktail_recommendation.dto.CocktailDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +21,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/cocktail")
 public class CocktailController {
-    /*@Autowired
-    CocktailRepository cocktailRepository;
-
-    @Autowired
-    IngredientRepository ingredientRepository;*/
-
-    @Autowired
     CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
@@ -38,8 +35,13 @@ public class CocktailController {
     }
 
     @GetMapping("/list.do")
-    public String list(Model model) {
-        List<CocktailDto> cocktailList = newCocktailRepository.findAll();
+    public String list(Model model,
+                       @RequestParam(defaultValue = "1") int page
+    ) {
+        final int ROWS = 20;
+        Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").descending());
+        Page<CocktailDto> cocktailList = newCocktailRepository.findAll(pageable);
+
         model.addAttribute("cocktailList", cocktailList);
         return "/cocktail/list";
     }
