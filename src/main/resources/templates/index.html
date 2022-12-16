@@ -1,9 +1,192 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title hre</title>
+<meta charset="UTF-8">
+<title>Insert title hre</title>
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+body {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+#hot-wrapper {
+	box-sizing: border-box;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+.section, .widget, .widget ul {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	display: block;
+}
+
+#hot-section .show-hot .widget-content {
+	position: relative;
+	overflow: hidden;
+	height: 380px;
+	margin: 0 0 40px;
+}
+
+.hot-posts .hot-item.item-0 {
+	width: 50%;
+	height: 380px;
+}
+
+.hot-posts .hot-item {
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 380px;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 0 5px;
+}
+
+.hot-item-inner {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+}
+
+.hot-item.item-0 .hot-item-inner:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0,
+		rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 1) 100%);
+	background: #1a237e;
+	background: linear-gradient(45deg, #1a237e, #d84315);
+	opacity: .6;
+	z-index: 2;
+}
+
+.hot-item-inner:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	background: #004d40;
+	background: linear-gradient(45deg, #004d40, #827717);
+	opacity: .6;
+	z-index: 2;
+}
+
+.hot-posts .post-info {
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 25px;
+	z-index: 3;
+	text-align: center;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.hot-posts .hot-item.item-1, .hot-posts .hot-item.item-2 {
+	margin: 0 0 10px;
+}
+
+.hot-posts .hot-item {
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 380px;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 0 5px;
+}
+
+ul {
+	font-weight: 400;
+}
+.post-tag{
+background: rgb(36,12,0);
+background: linear-gradient(90deg, rgba(36,12,0,0) 0%, rgba(254,0,122,0.36318277310924374) 44%, rgba(255,0,0,0.36878501400560226) 100%, rgba(39,179,242,1) 100%, rgba(246,27,232,1) 100%);
+
+}
+#postd{
+background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,254,100,0.6797093837535014) 44%, rgba(0,166,255,0.36878501400560226) 100%, rgba(39,179,242,1) 100%, rgba(246,27,232,1) 100%);
+}
+</style>
 </head>
+<header th:include="/header"></header>
 <body>
+	<div id="outer-wrapper">
+		<div id="hot-wrapper">
+			<div class="section" id="hot-section" name="Hot Posts">
+				<div class="widget HTML show-hot" data-version="2" id="HTML2">
+					<div class="widget-title">
+						<h3 class="title">ㅤ</h3>
+					</div>
+					<div class="widget-content">
+						<ul class="hot-posts">
+							<li class="hot-item item-0"><div class="hot-item-inner">
+									<a class="post-image-link"
+										href="https://finance-omtemplates.blogspot.com/2016/03/uk-faces-two-decades-of-no-earnings.html"><img
+										class="post-thumb lazy-yard" alt=""
+										src="https://img.freepik.com/free-photo/fruit-cocktail-with-fresh-strawberry_140725-1777.jpg?size=626&ext=jpg&ga=GA1.2.426504792.1670812634&semt=sph"></a>
+									<div class="post-info">
+										<span class="post-tag" style="color:white !important; font-size:20px;  padding:3px" >Recommendation</span>
+										<h2 class="post-title">
+											<a
+												href="/reco/cocktailreco" style="color:white !important">
+												More than 600 different cocktails are recommended.</a>
+										</h2>
+										<div class="post-meta">
+											<span class="post-date">March 18, 2016</span>
+										</div>
+									</div>
+								</div></li>
+							<li class="hot-item item-1"><div class="hot-item-inner">
+									<a class="post-image-link"
+										href="https://finance-omtemplates.blogspot.com/2016/03/the-next-generation-of-cryptocurrency.html"><img
+										class="post-thumb lazy-yard" alt=""
+										src="https://img.freepik.com/premium-photo/colourful-coctail_130291-1511.jpg?size=626&ext=jpg&ga=GA1.2.426504792.1670812634&semt=sph"></a>
+									<div class="post-info">
+										<span class="post-tag" id="postd" style="color:white !important; font-size:20px; padding:3px" >Search</span>
+										<h2 class="post-title">
+											<a style="color:white !important"
+												href="/search/cocktailsearch">The
+												Search various cocktails for more information </a>
+										</h2>
+										<div class="post-meta">
+											<span class="post-date" >March 17, 2016</span>
+										</div>
+									</div>
+								</div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 인기리스트  -->
+	<div id="hot-wrapper">
+		<div class="widget-title">
+			<h3 class="title">칵테일 인기 리스트 TOP10</h3>
+		</div>
+
+	</div>
+
+
 </body>
+
 </html>

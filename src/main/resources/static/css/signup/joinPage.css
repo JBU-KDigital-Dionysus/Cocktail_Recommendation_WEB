@@ -1,6 +1,15 @@
-*{
-padding: 0;
-margin: auto;
+main {
+  padding: 1rem ;
+  height: 100%;  
+}
+
+body {
+  padding-top: 140px;
+  margin:0 auto;
+}
+
+body, html {
+  height: 100%;
 }
 
 .container {
@@ -20,6 +29,8 @@ margin: 0 auto;
 .h1d{
 	margin-left:70px;
 	font-size:40px;
+	color:#4169e1;
+	font-weight:bold;
 
 }
 .h2d {
@@ -108,7 +119,7 @@ margin-bottom:30px;
 }
 
 .button4{
-	background-color: #0000ff; /* Green */
+	background-color: #4169e1; /* Green */
 }
 
 .button5{
@@ -125,8 +136,8 @@ margin-bottom:30px;
 }
 
 .button6 {
-	background-color: #0d6efd;
-	border-color: #0d6efd;
+	background-color: #4169e1;
+	border-color: #4169e1;
 	
    }  
 
@@ -134,7 +145,7 @@ margin-bottom:30px;
 
 
 .button2 {
-	background-color: #0d6efd;
+	background-color: #4169e1;
 }
 .button2:disabled {
 	background-color:#84bbff;
