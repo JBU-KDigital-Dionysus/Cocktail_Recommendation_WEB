@@ -36,6 +36,7 @@
 	    float: left;
 	    width: 30%;
 	    height: 77%;
+	    /* border: 1px solid black; */
 	    
   	}
   		.ImgBox{
@@ -50,7 +51,7 @@
   		
   		.TitleBox{	
   			/* border: 1px solid black; */
-  			padding: 20px 20px 20px 20px;
+  			padding: 5px 20px 20px 20px;
   			font-size: 30px;
   			font-weight: 600;			
   		}
@@ -59,13 +60,13 @@
   		.IngredientBox{
 		    /* border: 1px solid blue; */
 		    line-height: 35px; 
-		    padding: 20px 20px 20px 20px;
+		    padding: 10px 20px 20px 20px;
 		    font-size: 17px;
 		    		
   		}
   		.FlavorBox{
 		    /* border: 1px solid black; */
 		    line-height: 35px;
-		    padding: 20px 20px 20px 20px;
+		    padding: 10px 20px 20px 20px;
 		    font-size: 17px;
   		}

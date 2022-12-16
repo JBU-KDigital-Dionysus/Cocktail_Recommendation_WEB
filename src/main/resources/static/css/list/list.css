@@ -1,0 +1,20 @@
+@charset "UTF-8";
+table{
+	border: 1px solid blue;
+	margin: 30px;
+}
+
+tbody{
+	display: grid;
+    grid: '. . . .';
+    gap: 30px;
+    margin: 30px;
+}
+
+.id{
+	/* display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr); */
+	padding: 15px;
+    background: white;
+}
