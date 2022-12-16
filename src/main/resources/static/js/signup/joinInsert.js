@@ -34,10 +34,11 @@ userInsertForm.cstId.addEventListener("change",checkUserId)
 
 
     function check_pw(){
-	   		userInsertForm.userPW2.classList.remove("is-invalid");
-			userInsertForm.userPW2.classList.remove("is-valid");
 			userInsertForm.cstPw.classList.remove("is-invalid");
 			userInsertForm.cstPw.classList.remove("is-valid");
+	   		userInsertForm.userPW2.classList.remove("is-invalid");
+			userInsertForm.userPW2.classList.remove("is-valid");
+			
 			
 			let cstPw=userInsertForm.cstPw.value;
             var pw = document.getElementById('pw').value;
@@ -68,7 +69,6 @@ userInsertForm.cstId.addEventListener("change",checkUserId)
 					userInsertForm.cstPw.classList.add("is-invalid");
 			}
             if(pw.length > 6 && pw.length <16 && check_SC != 0 ) {
-				check1.innerHTML='사용할 수 있는 비밀번호입니다.';
 				userInsertForm.cstPw.classList.add("is-valid");
 			}
             if(pattern2.test(cstPw) && pattern1.test(cstPw) && pw.length > 6 && pw.length <16 && check_SC != 0 && document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
