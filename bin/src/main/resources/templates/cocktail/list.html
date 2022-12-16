@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>COCKTAIL LIST</title>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr th:each="cocktail:${cocktailList}"
+        th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
+        <td th:text="${cocktail.ctNo}"></td>
+        <td th:text="${cocktail.ctName}"></td>
+    </tr>
+    </tbody>
+</table>
+<nav th:include="cocktail/pageNav"></nav>
+</body>
+</html>
