@@ -51,7 +51,7 @@ public class CocktailController {
 
     @GetMapping("/search.do")
     public String search(Model model,
-                         @RequestParam(defaultValue = "1") int page,
+                         @RequestParam(defaultValue = "0") int page,
                          String ctName
     ) {
         final int ROWS = 20;
