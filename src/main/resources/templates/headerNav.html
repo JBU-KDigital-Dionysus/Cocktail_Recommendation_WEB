@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>headerNav</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/headerNav.css}">
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <a href="/">cocktail</a>
+    </div>
+    <div class="gnb">
+        <a href="/cocktail/list.do">Search</a> <a href="">Recommendation</a> <a href="">Bar</a>
+    </div>
+    <div class="lnb">
+        <th:block th:if="${session.loginUser==null}">
+            <a href="/signup/login.do">로그인</a>
+            <a href="/signup/joinProc">회원가입</a>
+        </th:block>
+        <th:block th:unless="${session.loginUser==null}">
+            <a href="/signup/logout.do">로그아웃</a>
+        </th:block>
+    </div>
+</nav>
+</body>
+</html>

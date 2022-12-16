@@ -101,6 +101,12 @@ public class SignupController {
             return "redirect:/signup/login.do";
         }
     }
+
+    @GetMapping("/logout.do")
+    public String logout(HttpSession session) {
+        session.removeAttribute("loginUser");
+        return "redirect:/";
+    }
 }
 
 
