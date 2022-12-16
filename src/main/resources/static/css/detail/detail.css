@@ -1,0 +1,71 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+}
+
+.content{
+		display: flex;
+  		justify-content : center;
+	    width: 100%;
+	    height: 100vh;
+	   	margin-top:130px;
+	    /* border: 1px solid blue; */
+	    /* font-size: 15px; */
+ 	}
+	.content:after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	}  
+	  	
+  	.ct_left_area{
+		float: left;
+	    width: 30%;
+	    height: 77%;
+	    border: 1px solid #c6c6cf;
+	    margin-right: 55px;
+  	}
+  	.line{
+		    width: 100%;
+		    border-top:1px solid #c6c6cf;  		
+  		}
+  		
+
+  	.ct_right_area{
+	    float: left;
+	    width: 30%;
+	    height: 77%;
+	    
+  	}
+  		.ImgBox{
+  			height: 80%;
+  		}
+  		.TagBox{
+  			/* text-align: center; */
+  			margin-top: 10px;
+  			line-height: 40px;
+  			font-size: 17px;
+  		}
+  		
+  		.TitleBox{	
+  			/* border: 1px solid black; */
+  			padding: 20px 20px 20px 20px;
+  			font-size: 30px;
+  			font-weight: 600;			
+  		}
+  			
+  		
+  		.IngredientBox{
+		    /* border: 1px solid blue; */
+		    line-height: 35px; 
+		    padding: 20px 20px 20px 20px;
+		    font-size: 17px;
+		    		
+  		}
+  		.FlavorBox{
+		    /* border: 1px solid black; */
+		    line-height: 35px;
+		    padding: 20px 20px 20px 20px;
+		    font-size: 17px;
+  		}
