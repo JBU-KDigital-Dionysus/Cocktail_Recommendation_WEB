@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<head>
+<meta charset="UTF-8">
+<title>로그인 페이지</title>
+</head>
+<body>
+	<main class="container mx-auto" style="max-width: 500px">
+		<h1 class="d-flex justify-content-center mt-5">로그인</h1>
+		<!-- action -->
+		<form action="/signup/loginPage.do" method="post" class="mt-5">
+		  <div class="form-floating  mb-3 ">
+		      <input name="ctId" type="text" class="form-control" id="inputCtId" placeholder="아이디를 입력하세요">
+		    <label for="inputCtId" class="col-sm-2 col-form-label">아이디를 입력하세요</label>
+		    
+		    
+		  </div>
+		  <div class="form-floating  mb-3 ">
+		      <input name="ctPw" type="password" class="form-control" id="inputCtPw" placeholder="비밀번호를 입력하세요">
+		    <label for="inputCtPw" class="col-sm-2 col-form-label">비밀번호를 입력하세요</label>		    
+		  </div>
+		  
+		  <div class="d-grid gap-2">
+			  <button type="submit" class="btn btn-primary mt-4">로그인</button>
+		  </div>
+		  <div class="d-flex justify-content-center mt-3">
+		  	<a class="btn btn" href="/signup/joinPage.do">회원가입</a><div class="vr"></div><a class="btn btn" href="/login/findId.do">아이디 찾기</a><div class="vr"></div><a class="btn btn" href="/login/findPassword.do">비밀번호 찾기</a>
+		  </div>
+		</form>
+	</main>
+</body>
+</html>
