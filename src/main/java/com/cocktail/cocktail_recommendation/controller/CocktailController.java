@@ -37,13 +37,29 @@ public class CocktailController {
 
     @GetMapping("/list.do")
     public String list(Model model,
-                       @RequestParam(defaultValue = "1") int page
+                       @RequestParam(defaultValue = "1") int page,
+                       @RequestParam(required = false) String ctName
     ) {
         final int ROWS = 20;
-        Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").descending());
+        Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").ascending());
         Page<CocktailDto> cocktailList = newCocktailRepository.findAll(pageable);
 
         model.addAttribute("cocktailList", cocktailList);
-        return "/cocktail/list";
+        return "/cocktail/search";
+    }
+
+    @GetMapping("/search.do")
+    public String search(Model model,
+                         @RequestParam(defaultValue = "1") int page,
+                         String ctName
+    ) {
+        final int ROWS = 20;
+        Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").ascending());
+        Page<CocktailDto> cocktailList = newCocktailRepository.findByCtNameContaining(ctName, pageable);
+
+        model.addAttribute("cocktailList", cocktailList);
+        return "/cocktail/search";
     }
 }
+
+
