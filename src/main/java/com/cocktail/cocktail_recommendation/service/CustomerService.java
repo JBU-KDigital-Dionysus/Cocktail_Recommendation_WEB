@@ -10,6 +10,8 @@ import com.cocktail.cocktail_recommendation.repository.CustomerRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class CustomerService {
@@ -26,6 +28,10 @@ public class CustomerService {
 		
 		return customer.getCstId();
     }
-    
 
+	@Transactional(readOnly = true)
+	public String checkID(String cstId){
+		Optional<Customer> customer = customerRepository.findCustomerByCstId(cstId);
+		return customer.map(Customer::getCstId).orElse(null);
+	}
 }

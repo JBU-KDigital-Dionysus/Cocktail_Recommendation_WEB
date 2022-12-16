@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<table>
+    <tbody>
+    <tr th:each="cocktail:${cocktailList}"
+        th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
+        <td th:text="${cocktail.ctNo}"></td>
+        <td th:text="${cocktail.ctName}"></td>
+    </tr>
+    </tbody>
+</table>
+</html>
