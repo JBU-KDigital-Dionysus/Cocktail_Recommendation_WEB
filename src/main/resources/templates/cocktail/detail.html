@@ -7,7 +7,7 @@
     
 </head>
 <body>
-
+<header th:include="/headerNav"></header>
 <div class="container">
 						
 			<div class="content">
@@ -73,23 +73,24 @@
 					</div>
 					
 					<div class=" IngredientBox">
+						 <p><strong>재료</strong></p>
 						 <p>
-					        <strong>재료1 :</strong>
+					        <!-- <strong>재료1 :</strong> -->
 					        <th:block th:text="${cocktail.ingName1}"></th:block>
 					        <th:block th:text="${cocktail.ingUnit1}"></th:block>
 					    </p>
 					    <p>
-					        <strong>재료2 :</strong>
+					        <!-- <strong>재료2 :</strong> -->
 					        <th:block th:text="${cocktail.ingName2}"></th:block>
 					        <th:block th:text="${cocktail.ingUnit2}"></th:block>
 					    </p>
 					    <p>
-					        <strong>재료3 :</strong>
+					        <!-- <strong>재료3 :</strong> -->
 					    	<th:block th:text="${cocktail.ingName3}"></th:block>
 					    	<th:block th:text="${cocktail.ingUnit3}"></th:block>
 					    </p>
 					    <p>
-					        <strong>재료4 :</strong>
+					        <!-- <strong>재료4 :</strong> -->
 					    	<th:block th:text="${cocktail.ingName4}"></th:block>
 					    	<th:block th:text="${cocktail.ingUnit4}"></th:block>
 					    </p>
