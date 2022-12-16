@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style>
 :root {
 	--primary-color: #f1f3f5;
@@ -19,21 +20,18 @@
     --smoke-white:#f1f3f5;
     --blue:#4169e1;
 }
-* { box-sizing: border-box }
 
 body {
-	color: var(--text-color);
-	font-family: var(--main-font), Arial;
-	font-weight: var(--font-regular);
+	color: var(--text-color) !important;
+	font-family: var(--main-font), Arial!important;
+	font-weight: var(--font-regular)!important;
 }
 main{ 
-	display: flex;
-	flex-direction: column;
+	display: flex!important;
+	flex-direction: column!important;
 
-	align-items: center;
-	margin-top:150px;
-	width: 100vw;
-	height: 100vh;
+	align-items: center!important;
+	margin-top:100px!important;
 }
 h1 { font-weight: var(--font-bold) }
 input, 
@@ -161,8 +159,9 @@ button {cursor: pointer}
 }
 </style>
 </head>
-<body>
 
+<body>
+<header th:include="/header"></header>
 <main>
 	<h1>COCKTAIL SEARCH</h1>
 	<form method="GET" action="/search/cocktail.do">
