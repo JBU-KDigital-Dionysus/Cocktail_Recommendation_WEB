@@ -11,11 +11,13 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cocktail.cocktail_recommendation.dto.CustomerDto;
 import com.cocktail.cocktail_recommendation.service.CustomerService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/signup")
@@ -61,6 +63,15 @@ public class SignupController {
 		// 회원가입 성공 시
 		customerService.join(customerDto);
 		return "redirect:/";
+	}
+
+	@PostMapping("/checkId")
+	@ResponseBody
+	public int checkid(@RequestParam("cstId") String cstId){
+		if (cstId.equals(customerService.checkID(cstId))){
+			return 1;
+		}
+		return 0;
 	}
 }
 
