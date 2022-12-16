@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <head>
     <meta charset="UTF-8">
-    <title>LOGIN</title>
+    <title>로그인 페이지</title>
 </head>
 <body>
-<main>
-    <h1 >로그인</h1>
-    <form action="/signup/login.do" method="post" >
-        <div>
-            <input name="cstId" value="cst1" type="text" id="inputUserId" placeholder="id 입력">
-            <label for="inputUserId">ID</label>
+<main class="container mx-auto" style="max-width: 500px">
+    <h1 class="d-flex justify-content-center mt-5">로그인</h1>
+    <!-- action -->
+    <form action="/signup/login.do" method="post" class="mt-5">
+        <div class="form-floating  mb-3 ">
+            <input name="cstId" type="text" class="form-control" id="inputCstId" placeholder="아이디를 입력하세요">
+            <label for="inputCstId" class="col-sm-2 col-form-label">아이디를 입력하세요</label>
+
+
         </div>
-        <div class="form-floating mb-3">
-            <input name="cstPw" value="1234" type="password" id="inputPw" placeholder="pw 입력">
-            <label for="inputPw">Password</label>
+        <div class="form-floating  mb-3 ">
+            <input name="cstPw" type="password" class="form-control" id="inputCstPw" placeholder="비밀번호를 입력하세요">
+            <label for="inputCstPw" class="col-sm-2 col-form-label">비밀번호를 입력하세요</label>
         </div>
-        <div >
-            <div>
-                <div>
-                    <input type="checkbox" id="gridCheck1">
-                    <label for="gridCheck1">
-                        로그인 유지
-                    </label>
-                </div>
-            </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary mt-4">로그인</button>
         </div>
-        <div>
-            <button type="submit">로그인</button>
-            <a>회원가입</a>
+        <div class="d-flex justify-content-center mt-3">
+            <a class="btn btn" href="/signup/joinProc">회원가입</a><div class="vr"></div><a class="btn btn" href="/login/findId.do">아이디 찾기</a><div class="vr"></div><a class="btn btn" href="/login/findPassword.do">비밀번호 찾기</a>
         </div>
     </form>
 </main>
