@@ -20,5 +20,11 @@ public class SearchCocktailController {
 	public void SearchCocktail() {
 
 	}
+	
+	@GetMapping("/cocktailsearch")
+	public void Cocktailsearch() {
+
+	}
+
 
 }

@@ -3,9 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>headerNav</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/headerNav.css}">
-	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style>
 
@@ -60,16 +57,17 @@ header nav ul li:hover a:after {opacity:1;}
 <body>
    <header>
    <div class="navdiv">
-   <img class="fit-picture" src="/img/CC.png" style="padding-left:10px";>
+   <a href="/">
+   <img class="fit-picture" src="/img/CC.png" style="padding-left:10px";></a>
       <nav>
       
       <ul class="lnb">
-    	 	<li><a class="ali" href="/search/cocktailsearch">칵테일 검색</a> </li>
+    	 	<li><a class="ali" href="/cocktail/list.do">칵테일 검색</a> </li>
   
          	<li><a class="ali" href="/reco/cocktailreco">칵테일 추천</a> </li>
-         	<li><a class="ali"  href="">칵테일 바</a></li>
+         	<li><a class="ali"  href="/bar/bar">칵테일 바</a></li>
          	<li><a class="ali" ></a></li>
-            <li><a class="ali"  href="/login/loginPage">로그인</a></li>
+            <li><a class="ali"  href="/signup/login.do">로그인</a></li>
           
          <!-- <a href="">로그아웃</a> -->
       </ul>

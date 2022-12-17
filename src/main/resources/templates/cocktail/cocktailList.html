@@ -1,12 +1,21 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/list/list.css">
-<table>
+<head>
+<meta charset="UTF-8">
+<title>로그인 </title>
+
+</head>
+<body>
+<table  >
     <tbody>
     <tr class="id" th:each="cocktail:${cocktailList}"
         th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         <!-- <td th:text="${cocktail.ctNo}"></td> -->
-        <td th:text="${cocktail.ctName}"></td>
+        <td id="tdid" th:text="${cocktail.ctName}" ></td>
     </tr>
     </tbody>
 </table>
+</body>
 </html>
