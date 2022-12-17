@@ -38,7 +38,7 @@ public class CocktailController {
 
     @GetMapping("/list.do")
     public String list(Model model,
-                       @RequestParam(defaultValue = "1") int page,
+                       @RequestParam(defaultValue = "0") int page,
                        @RequestParam(required = false) String ctName
     ) {
         final int ROWS = 20;
