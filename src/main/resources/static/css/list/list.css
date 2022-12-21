@@ -1,20 +1,27 @@
 @charset "UTF-8";
 table{
-	border: 1px solid blue;
 	margin: 30px;
+	
 }
 
 tbody{
 	display: grid;
     grid: '. . . .';
-    gap: 30px;
+    /* gap: 30px; */
+    row-gap: 30px;
+    column-gap: 50px;
     margin: 30px;
 }
 
 .id{
-	/* display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(5, 1fr); */
 	padding: 15px;
     background: white;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.tdimg{
+	width: 130px;
+  	height: 130px;
 }
