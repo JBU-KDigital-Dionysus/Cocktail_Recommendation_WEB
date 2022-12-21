@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+
+<style>
+body {
+	background: #FCFCFC;
+	color: #222;
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+}
+
+.parent {
+	width: 90%;
+	margin: 10px auto;
+	display: flex;
+}
+
+.first {
+	border: 1px solid red;
+	flex: 1;
+	width: 150px;
+	height: 300px;
+	box-sizing: border-box;
+}
+
+.second {
+	border: 1px solid green;
+	flex: 1;
+	margin: 0px 5%;
+	width: 30%;
+	box-sizing: border-box;
+}
+
+.select2 {
+	width: 90%;
+	margin: 10px auto;
+	display: flex;
+}
+
+.first2 {
+	border: 1px solid red;
+	flex: 1;
+	max-width: 50%;
+	height: 300px;
+	box-sizing: border-box;
+}
+
+.second2 {
+	border: 1px solid green;
+	flex: 1;
+	margin: 0px 5%;
+	max-width: 50%;
+	box-sizing: border-box;
+}
+
+.third {
+	border: 1px solid blue;
+	flex: 1;
+	width: 30%;
+	box-sizing: border-box;
+}
+
+.first-box {
+	flex: 1;
+	width: 30%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.second-box {
+	flex: 1;
+	margin: 0px 5%;
+	width: 30%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.third-box {
+	flex: 1;
+	width: 30%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.select {
+	width: 90%;
+	margin: 10px auto;
+	display: flex;
+	padding: 15px 10px;
+}
+
+.select input[type=radio] {
+	display: none;
+}
+
+.select input[type=radio]+label {
+	display: inline-block;
+	cursor: pointer;
+	height: 40px;
+	width: 120px;
+	border: 1px solid #333;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.select input[type=radio]+label {
+	background-color: #fff;
+	color: #333;
+}
+
+.select input[type=radio]:checked+label {
+	background-color: #333;
+	color: #fff;
+}
+
+.container2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+}
+
+#holder {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	background: white;
+	padding: 10px;
+	width: 250px;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-65%);
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+}
+
+.button {
+	background: #3D4C53;
+	margin: 20px auto;
+	width: 250px;
+	height: 70px;
+	overflow: hidden;
+	text-align: center;
+	transition: .2s;
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+}
+
+.btnTwo {
+	position: relative;
+	width: 200px;
+	height: 100px;
+	margin-top: -100px;
+	padding-top: 2px;
+	background: #26A69A;
+	left: -250px;
+	transition: .3s;
+}
+
+.btnText {
+	color: white;
+	transition: .3s;
+	line-height: 70px;
+}
+
+.btnText2 {
+	margin-top: 50px;
+	margin-right: -130px;
+	color: #FFF;
+}
+
+.button:hover .btnTwo { /*When hovering over .button change .btnTwo*/
+	left: -130px;
+}
+
+.button:hover .btnText { /*When hovering over .button change .btnText*/
+	margin-left: 65px;
+}
+
+.button:active { /*Clicked and held*/
+	box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+</style>
+</head>
+<body>
+	<header th:include="./header"></header>
+	<div class="container2">
+		<div>
+			<h1 style="font-weight: bold; font-size: 50px;">COKCTAIL
+				RECOMMENDATION</h1>
+			<br />
+			<hr />
+			<h2>칵테일의 한잔의 여유</h2>
+			<h2>취향에 맞는 칵테일을 추천해드립니다.</h2>
+			<hr />
+			<br />
+
+
+			<div class="button" onclick="location.href='http://localhost:8080/reco/cocktailreco1';">
+				<div class="btnText">
+					<strong>READY?</strong>
+				</div>
+				<div class="btnTwo">
+					<div class="btnText2">
+						<strong>GO!</strong>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<br />
+		<br />
+	</div>
+</body>
+</html>
