@@ -63,13 +63,17 @@ header nav ul li:hover a:after {opacity:1;}
       
       <ul class="lnb">
     	 	<li><a class="ali" href="/cocktail/list.do">칵테일 검색</a> </li>
-  
+
          	<li><a class="ali" href="/reco/cocktailreco">칵테일 추천</a> </li>
          	<li><a class="ali"  href="/bar/bar">칵테일 바</a></li>
          	<li><a class="ali" ></a></li>
-            <li><a class="ali"  href="/signup/login.do">로그인</a></li>
-          
-         <!-- <a href="">로그아웃</a> -->
+          <th:block th:if="${session.loginUser==null}">
+              <li><a class="ali" href="/signup/login.do">로그인</a></li>
+          </th:block>
+
+          <th:block th:unless="${session.loginUser==null}">
+              <a href="/signup/logout.do">로그아웃</a>
+          </th:block>
       </ul>
       </nav>
       </div>

@@ -17,7 +17,7 @@ public class CocktailDto {
 
     @Id
     @Column(name = "CT_NO")
-    private String ctNo;
+    private int ctNo;
     @Column(name = "CT_NAME")
     private String ctName;
     @Column(name = "CT_IMAGE")
