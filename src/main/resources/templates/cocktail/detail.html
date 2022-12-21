@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>COCKTAIL DETAIL</title>
     <link rel="stylesheet" href="/css/detail/detail.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div th:insert="/header"></div>
@@ -13,23 +13,24 @@
 			<div class="content">
 				<div class="ct_left_area">
 					<div class="ImgBox">
-						<p>img</p>
+						<!-- img -->
+						<img class="cocimg" alt="" src="/img/cocktail12.png">
 					</div>
 					
-					<div class="line">
-					</div>
+					<!-- <div class="line">
+					</div> -->
 					
 					<div class="TagBox">
 						<p class="tags">
-				        	<strong>계절 :</strong>
+				        	<strong>계절 #</strong>
 					    	<th:block th:text="${cocktail.ctSeason}"></th:block>
 					    </p>
 					    <p class="tags">
-					        <strong>시간 :</strong>
+					        <strong>시간 #</strong>
 					    	<th:block th:text="${cocktail.ctTime}"></th:block>
 					    </p>
 					    <p class="tags">
-					        <strong>인증여부 :</strong>
+					        <strong>인증여부 #</strong>
 					        <th:block th:text="${cocktail.ctCertified}"></th:block>
 					    </p>
 					</div>				
@@ -52,19 +53,19 @@
 					
 					<div class="FlavorBox">
 					    <p>
-					        <strong>알코올 :</strong>
-					    	<th:block th:text="${cocktail.ctAlcohol}"></th:block>
+					        <strong>알콜도수 </strong>
+					    	<th:block th:text="${cocktail.ctAlcohol}"></th:block>%
 					    </p>
 					    <p>	
-					        <strong>알코올 단계 :</strong>
+					        <strong>알코올 단계 </strong>
 					    	<th:block th:text="${cocktail.ctAlcoholClass}"></th:block>
 					    </p>
 					    <p>
-					        <strong>맛 :</strong>
+					        <strong>맛 </strong>
 					    	<th:block th:text="${cocktail.ctFlavorClass}"></th:block>
 					    </p>
 					    <p>
-					        <strong>종류 :</strong>
+					        <strong>종류 </strong>
 					    	<th:block th:text="${cocktail.ctKind}"></th:block>
 					    </p>
 					</div>	
@@ -136,7 +137,8 @@
 					    </p>
 					</div>
 					
-						
+					<div class="line">
+					</div>
 				</div>
 			</div>
 						

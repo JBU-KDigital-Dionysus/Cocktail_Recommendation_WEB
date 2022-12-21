@@ -8,11 +8,14 @@
 
 </head>
 <body>
-<table  >
+<table>
     <tbody>
     <tr class="id" th:each="cocktail:${cocktailList}"
         th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         <!-- <td th:text="${cocktail.ctNo}"></td> -->
+        <td id="tdid">
+        	<img class="tdimg" alt="" src="/img/cocktail12.png">
+        </td>
         <td id="tdid" th:text="${cocktail.ctName}" ></td>
     </tr>
     </tbody>
