@@ -31,7 +31,9 @@ public class CocktailController {
     CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
-    public String detail(@RequestParam(required = true) int ctNo, Model model) {
+    public String detail(@RequestParam(required = true) int ctNo,
+                         Model model
+                         ) {
         Optional<CocktailDto> newCocktailOpt = newCocktailRepository.findById(ctNo);
         if (newCocktailOpt.isPresent()) {
             model.addAttribute("cocktail", newCocktailOpt.get());
