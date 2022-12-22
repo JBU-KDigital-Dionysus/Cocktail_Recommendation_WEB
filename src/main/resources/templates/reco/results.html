@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+
+function imgUpload(){
+	console.log('imgUpload');
+	const FileElement = document.querySelector('#fileInput');
+	console.log('FileElement : ', FileElement);
+	console.log(FileElement.files[0]);
+	
+	var formData = new FormData();	
+	formData.append("dataFile",FileElement.files[0]);
+	
+	fetch('/CONT/upload', {
+	    method: 'POST',
+	    cache: 'no-cache',
+	    body: formData
+	})
+	.then((response) => response.json())
+	.then((data) => {	    
+	    var list = "";
+	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){	
+	    	list += "<div><span>" + JSON.parse(data.result).data.txts[i] + "</div>";
+	    }
+	    document.getElementById("ocr_result_time").innerHTML = data.time;
+	    document.getElementById("ocr_result").innerHTML = list;
+	});
+}
+</script>
+
+<body>
+	<input id="fileInput" type="file" name="uploadfile" multiple="multiple" />
+	<button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
+	<br/>
+	<br/>
+	<span style="font-size: 24px;">처리 시간 : </span><span id="ocr_result_time" style="font-size: 24px;"></span>
+	<br/>
+	<br/>
+	<span style="font-size: 24px;">처리 결과 : </span>
+	<div id="ocr_result"></div>
+</body>
+</html>

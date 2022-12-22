@@ -60,6 +60,16 @@ public class CocktailRecoController {
 			return "redirect:/reco/results";
 	}
 	
+	@GetMapping("/results")
+    public String results() {
+		return "/reco/results";
+	}
+	@PostMapping("/results")
+    public String resultsP() {
+		return "/reco/results";
+	}
+
+	
 	
 	
 	
