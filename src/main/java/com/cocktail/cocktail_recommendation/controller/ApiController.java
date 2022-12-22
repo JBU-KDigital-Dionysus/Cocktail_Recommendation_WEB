@@ -1,11 +1,7 @@
 package com.cocktail.cocktail_recommendation.controller;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,11 +11,10 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -36,38 +31,24 @@ public class ApiController {
 	@Value("${debugMode}")
 	public boolean debugMode;
 
-	@PostMapping(value = "/upload")
+	@PostMapping(value = "/upload",consumes="application/json;" )
 	@ResponseBody
-	public Map<String, String> imgUpload(@RequestParam("dataFile") String dataFile) {
-		
+	public Map<String, String>  imgUpload(@RequestBody  Map<String, Object> map) {
+		System.out.println(map);
+		System.out.println(map.get("fileName"));
 		//코드 실행 전에 시간 받아오기
-		long beforeTime = System.currentTimeMillis();
 		
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
-		String originName ="";
-		
-		// 이미지 폴더 경로
-		String path = SAVE_PATH;
-
-		
 		JSONObject dbSrvJson = new JSONObject();
-		dbSrvJson.put("fileName", originName);
-		dbSrvJson.put("filePath", path + "/" + originName);
-		dbSrvJson.put("debug", debugMode);
+		dbSrvJson.put("fileName", map.get("fileName"));
 
 		JSONObject result = byPass(pythonURL, dbSrvJson, "POST");
-		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		
-		long secDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
-		
-		String time = Long.toString(secDiffTime);
-		
 		resultMap.put("result", result.toString());
-		resultMap.put("time", time);
-
 		return resultMap;
 	}
+	
+	
 
 	public JSONObject byPass(String url, JSONObject jsonData, String option) {
 	    JSONObject responseJson = new JSONObject();

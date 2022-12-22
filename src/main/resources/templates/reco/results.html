@@ -8,17 +8,22 @@
 
 function imgUpload(){
 	console.log('imgUpload');
-	const FileElement = document.querySelector('#fileInput');
-	console.log('FileElement : ', FileElement);
-	console.log(FileElement.files[0]);
-	
+	const form = document.querySelector('#sample-form');
 	var formData = new FormData();	
-	formData.append("dataFile",FileElement.files[0]);
-	
+	let info = 
+	{
+		"fileName":document.querySelector('#no').value,
+		"filePath": document.querySelector('#my_name').value,
+		"debug": document.querySelector('#my_contact').value,
+	}
+		
 	fetch('/CONT/upload', {
 	    method: 'POST',
 	    cache: 'no-cache',
-	    body: formData
+	    headers: {
+	        "Content-Type": "application/json",
+	      },
+	    body: JSON.stringify(info)
 	})
 	.then((response) => response.json())
 	.then((data) => {	    
@@ -30,17 +35,19 @@ function imgUpload(){
 	    document.getElementById("ocr_result").innerHTML = list;
 	});
 }
+
 </script>
 
 <body>
-	<input id="fileInput" type="file" name="uploadfile" multiple="multiple" />
-	<button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
-	<br/>
-	<br/>
-	<span style="font-size: 24px;">처리 시간 : </span><span id="ocr_result_time" style="font-size: 24px;"></span>
-	<br/>
-	<br/>
-	<span style="font-size: 24px;">처리 결과 : </span>
-	<div id="ocr_result"></div>
+	<form method="post">
+		<label>ID: </label> 
+		<input type="text" name="id" id="no" />
+		<label>NAME: </label>
+		<input type="text" name="name" id="my_name" />
+		<label>AGE: </label> 
+		<input type="text" name="age" id="my_contact" />
+  <button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
+		<input type="submit" value="formSubmit"/>
+	</form>
 </body>
 </html>
