@@ -38,33 +38,22 @@ public class ApiController {
 
 	@PostMapping(value = "/upload")
 	@ResponseBody
-	public Map<String, String> imgUpload(@RequestParam("dataFile") String dataFile) {
-		
-		//코드 실행 전에 시간 받아오기
-		long beforeTime = System.currentTimeMillis();
-		
+	public Map<String, String> imgUpload(@RequestParam("personalFlavors") String pfData) {
+
 		Map<String, String> resultMap = new HashMap<String, String>();
 		
-		String originName ="";
-		
+
 		// 이미지 폴더 경로
 		String path = SAVE_PATH;
 
 		
 		JSONObject dbSrvJson = new JSONObject();
-		dbSrvJson.put("fileName", originName);
-		dbSrvJson.put("filePath", path + "/" + originName);
+		dbSrvJson.put("personalFlavors", pfData);
 		dbSrvJson.put("debug", debugMode);
 
 		JSONObject result = byPass(pythonURL, dbSrvJson, "POST");
-		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		
-		long secDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
-		
-		String time = Long.toString(secDiffTime);
-		
+		System.out.println("result: " + result);
 		resultMap.put("result", result.toString());
-		resultMap.put("time", time);
 
 		return resultMap;
 	}
@@ -113,6 +102,7 @@ public class ApiController {
 	            return responseJson;
 	        }
 	    } catch (Exception e) {
+			e.printStackTrace();
 	        responseJson.put("result", "EXCEPTION");
 	        return responseJson;
 	    }

@@ -7,23 +7,20 @@
 <script>
 
 function imgUpload(){
-	console.log('imgUpload');
-	const FileElement = document.querySelector('#fileInput');
-	console.log('FileElement : ', FileElement);
-	console.log(FileElement.files[0]);
-	
-	var formData = new FormData();	
-	formData.append("dataFile",FileElement.files[0]);
-	
+	const personalFlavors = document.querySelector('#fileInput');
+
+	var formData = new FormData();
+	formData.append("personalFlavors",personalFlavors);
 	fetch('/CONT/upload', {
 	    method: 'POST',
 	    cache: 'no-cache',
 	    body: formData
 	})
 	.then((response) => response.json())
-	.then((data) => {	    
+	.then((data) => {
 	    var list = "";
-	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){	
+		console.log("txts[0]: " + JSON.parse(data.result).data.txts[0])
+	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){
 	    	list += "<div><span>" + JSON.parse(data.result).data.txts[i] + "</div>";
 	    }
 	    document.getElementById("ocr_result_time").innerHTML = data.time;
@@ -33,7 +30,7 @@ function imgUpload(){
 </script>
 
 <body>
-	<input id="fileInput" type="file" name="uploadfile" multiple="multiple" />
+	<input id="fileInput" name="uploadfile"/>
 	<button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
 	<br/>
 	<br/>
