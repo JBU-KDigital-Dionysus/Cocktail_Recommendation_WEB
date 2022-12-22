@@ -102,6 +102,9 @@ public class CocktailController {
 
         return "/search/cocktailSearch";
     }
+
+    @GetMapping("/bar.do")
+    public void bar(){}
 }
 
 
