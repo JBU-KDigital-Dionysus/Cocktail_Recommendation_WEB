@@ -1,27 +1,18 @@
 package com.cocktail.cocktail_recommendation.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
+import jakarta.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-
 
 @RestController
 @RequestMapping(value = "/CONT")
@@ -38,22 +29,25 @@ public class ApiController {
 
 	@PostMapping(value = "/upload")
 	@ResponseBody
-	public Map<String, String> imgUpload(@RequestParam("personalFlavors") String pfData) {
+	public Map<String, String> imgUpload(HttpSession session) {
 
 		Map<String, String> resultMap = new HashMap<String, String>();
-		
 
 		// 이미지 폴더 경로
 		String path = SAVE_PATH;
-
 		
 		JSONObject dbSrvJson = new JSONObject();
-		dbSrvJson.put("personalFlavors", pfData);
-		dbSrvJson.put("debug", debugMode);
+		Enumeration<String> enumStr = session.getAttributeNames();
+		while(enumStr.hasMoreElements()){
+			String attrName = enumStr.nextElement();
+			dbSrvJson.put(attrName, session.getAttribute(attrName));
+		}
+//		JSONObject result = getRecommendResult(pythonURL, "POST");
+//		resultMap.put("result", result.toString());
+		System.out.println(dbSrvJson.toJSONString());
+		JSONObject result_json = getRecommendResult(pythonURL, dbSrvJson, "POST");
 
-		JSONObject result = byPass(pythonURL, dbSrvJson, "POST");
-		System.out.println("result: " + result);
-		resultMap.put("result", result.toString());
+		resultMap.put("result", result_json.toJSONString());
 
 		return resultMap;
 	}
@@ -74,9 +68,8 @@ public class ApiController {
 	        start_con.setRequestProperty("Accept", "application/json");
 	        start_con.setRequestMethod(option);
 
-	        // data 전달
-
 	        // 출력 부분
+
 	        OutputStreamWriter wr = new OutputStreamWriter(start_con.getOutputStream());
 	        wr.write(jsonData.toString());
 	        wr.flush();
@@ -106,6 +99,38 @@ public class ApiController {
 	        responseJson.put("result", "EXCEPTION");
 	        return responseJson;
 	    }
+	}
+
+	public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
+		JSONObject responseJson = null;
+
+		try {
+			URL url = new URL("http://localhost:5000/apiTest");
+//            URL url = new URL(pythonUrl);
+			HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+			httpConn.setRequestMethod("POST");
+			httpConn.setRequestMethod(requestMethod);
+			httpConn.setDoOutput(true);
+			httpConn.setDoInput(true);
+
+			httpConn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Whale/3.18.154.7 Safari/537.36");
+			httpConn.setRequestProperty("Content-Type", "application/json");
+			httpConn.setRequestProperty("Accept", "application/json");
+
+			InputStream responseStream = httpConn.getResponseCode() / 100 == 2
+					? httpConn.getInputStream()
+					: httpConn.getErrorStream();
+			Scanner s = new Scanner(responseStream).useDelimiter("\\A");
+			String response = s.hasNext() ? s.next() : "";
+			System.out.println("response: " + response);
+			responseJson.put("content", response);
+			responseJson.put("result", "SUCCESS");
+		} catch (IOException e) {
+			responseJson.put("result", "EXCEPTION");
+			throw new RuntimeException(e);
+		}
+
+		return responseJson;
 	}
 	
 }

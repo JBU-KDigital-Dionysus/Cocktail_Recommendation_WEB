@@ -7,37 +7,32 @@
 <script>
 
 function imgUpload(){
-	const personalFlavors = document.querySelector('#fileInput');
+	// const personalFlavors = document.querySelector('#fileInput');
 
-	var formData = new FormData();
-	formData.append("personalFlavors",personalFlavors);
+	// var formData = new FormData();
+	// formData.append("personalFlavors",personalFlavors.value);
 	fetch('/CONT/upload', {
 	    method: 'POST',
 	    cache: 'no-cache',
-	    body: formData
+	    body: ""
 	})
 	.then((response) => response.json())
 	.then((data) => {
 	    var list = "";
-		console.log("txts[0]: " + JSON.parse(data.result).data.txts[0])
-	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){
-	    	list += "<div><span>" + JSON.parse(data.result).data.txts[i] + "</div>";
-	    }
-	    document.getElementById("ocr_result_time").innerHTML = data.time;
-	    document.getElementById("ocr_result").innerHTML = list;
+		let flavorInputs = JSON.parse(data.result).data.txts.trim().split(',')
+		for(var idx = 0; idx<flavorInputs.length; idx++){
+			list += "<div><span>" + flavorInputs[idx] + "</span></div>";
+		}
+	    document.getElementById("reco_result").innerHTML = list;
 	});
 }
 </script>
 
 <body>
-	<input id="fileInput" name="uploadfile"/>
 	<button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
 	<br/>
 	<br/>
-	<span style="font-size: 24px;">처리 시간 : </span><span id="ocr_result_time" style="font-size: 24px;"></span>
-	<br/>
-	<br/>
 	<span style="font-size: 24px;">처리 결과 : </span>
-	<div id="ocr_result"></div>
+	<div id="reco_result"></div>
 </body>
 </html>
