@@ -72,10 +72,8 @@ public class CocktailRecoController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/reco/results";
+        return "redirect:/CONT/upload";
     }
-
-    // requestMethod = "POST" or "GET"
 
 
     @GetMapping("/results")
