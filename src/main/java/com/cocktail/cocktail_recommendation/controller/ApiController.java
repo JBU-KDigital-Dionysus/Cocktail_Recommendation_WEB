@@ -137,25 +137,25 @@ public class ApiController {
             httpConn.setRequestProperty("Accept", "application/json");
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(httpConn.getOutputStream()));
-			bw.write(pflavors.toString());
-			bw.flush();
-			bw.close();
+            bw.write(pflavors.toString());
+            bw.flush();
+            bw.close();
 
             StringBuilder sb = new StringBuilder();
-			int responseCode = httpConn.getResponseCode();
-			if(responseCode == HttpURLConnection.HTTP_OK){
-				BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream(), StandardCharsets.UTF_8));
-				String line = null;
-				while((line = br.readLine()) != null){
-					sb.append(line);
-				}
+            int responseCode = httpConn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream(), StandardCharsets.UTF_8));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
 
                 responseJson.put("data", sb);
                 responseJson.put("result", "SUCCESS");
                 br.close();
 
                 return responseJson;
-			}else{
+            } else {
                 responseJson.put("result", "FAIL");
                 return responseJson;
             }
@@ -164,5 +164,4 @@ public class ApiController {
             return responseJson;
         }
     }
-
 }
