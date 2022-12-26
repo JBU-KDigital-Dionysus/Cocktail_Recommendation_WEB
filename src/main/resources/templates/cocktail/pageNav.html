@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<ul class="pagination justify-content-center">
+    <li class="page-item" th:classappend="${(cocktailList.isFirst)?'disabled':''}">
+        <a class="page-link" th:href="@{''(page=0)}">First</a>
+    </li>
+    <li class="page-item" th:classappend="${(!cocktailList.hasPrevious)?'disabled':''}">
+        <a class="page-link" th:href="@{''(page=${cocktailList.getNumber}-1)}">Prev</a>
+    </li>
+    <li class="page-item" th:each="page:${#numbers.sequence(0, (cocktailList.totalPages)-1)}">
+        <a 	class="page-link"
+              th:if="${page >= cocktailList.number-2 and page <= cocktailList.number+2}"
+              th:classappend="${(cocktailList.number==page)?'active':''}"
+              th:href="@{''(page=${page})}"
+              th:text="${page+1}"></a>
+    </li>
+    <li class="page-item" th:classappend="${(!cocktailList.hasNext)?'disabled':''}">
+        <a class="page-link" th:href="@{''(page=${cocktailList.getNumber}+1)}">Next</a>
+    </li>
+    <li class="page-item" th:classappend="${(cocktailList.isLast)?'disabled':''}">
+        <a class="page-link" th:href="@{''(page=${cocktailList.totalPages}-1)}">Last</a>
+    </li>
+
+</ul>
+</html>
