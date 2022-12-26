@@ -105,6 +105,9 @@ public class CocktailController {
 
     @GetMapping("/bar.do")
     public void bar(){}
+    
+    @GetMapping("/cocktailLike.do")
+	 public void like() {}
 
 }
 

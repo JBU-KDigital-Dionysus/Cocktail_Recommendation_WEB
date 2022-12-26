@@ -8,7 +8,7 @@ tbody{
 	display: grid;
     grid: '. . . .';
     /* gap: 30px; */
-    row-gap: 30px;
+    row-gap: 40px;
     column-gap: 50px;
     margin: 30px;
 }
@@ -18,10 +18,11 @@ tbody{
     background: white;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 185px;
+    height: 193px;
 }
 
 .tdimg{
-	width: 130px;
-  	height: 130px;
+	width: 150px;
+  	height: 150px;
 }

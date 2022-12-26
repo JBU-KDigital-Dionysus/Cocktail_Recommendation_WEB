@@ -24,7 +24,7 @@
   	.ct_left_area{
 		float: left;
 	    width: 50%;
-	    height: 855px;
+	    height: 850px;
 	    border: 1px solid #c6c6cf;
 	    margin-right: 50px;
   		background-color: black;
@@ -57,21 +57,17 @@
 
   	.ct_right_area{
 	    float: left;
-	    width: 40%;
-	    height: 855px;
-	    /* border: 1px solid black; */
-	    
-	    /* background-color: black;
-	    opacity:0.5;
-  		border-radius: 20px;
-  		color: white; */
-	    
+	    width: 45%;
+	    height: 850px; 
   	}
+  		.ct_right_area strong{
+  			color: #4169e1;
+  		}
   		
   		.TitleBox{	
   			/* border: 1px solid black; */
-  			padding: 20px 20px 20px 25px;
-  			font-size: 33px;
+  			padding: 25px 20px 28px 25px;
+  			font-size: 42px;
   			font-weight: 600;			
   		}
   			
