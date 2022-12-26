@@ -138,6 +138,8 @@
 
             <div class="line">
             </div>
+            
+           <p th:include="/cocktail/prefer"></p>
         </div>
     </div>
 
@@ -148,6 +150,9 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script type="text/javascript" th:inline="javascript">
+function joinform_check() {
+    document.userInsertForm.submit(); //유효성 검사의 포인트
+}
     let ctNo = [[${cocktail.ctNo}]]
     // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('d4f0102e4d33aadc5ba87bd59e9af5cd');
