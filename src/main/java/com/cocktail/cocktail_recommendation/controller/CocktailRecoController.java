@@ -63,12 +63,12 @@ public class CocktailRecoController {
     }
 
     @PostMapping("/cocktailreco3")
-    public String recommandtion3(@RequestParam("SEASON") String ctSeason, @RequestParam("TIME") String ctTime, @RequestParam("CERTIFIED") String ctCertified, HttpSession session) {
+    public String recommandtion3(@RequestParam("SEASON") String ctSeason, @RequestParam("TIME") String ctTime, @RequestParam("CERTIFIED") String ctCertified, @RequestParam("ctAlcohol") String ctAlcohol, HttpSession session) {
         try {
             session.setAttribute("ctSeason", ctSeason);
             session.setAttribute("ctTime", ctTime);
             session.setAttribute("ctCertified", ctCertified);
-//            session.setAttribute("ctAlcohol", ctAlcohol);
+            session.setAttribute("ctAlcohol", ctAlcohol);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -67,7 +67,6 @@ public class ApiController {
 //		JSONObject result = getRecommendResult(pythonURL, "POST");
 //		resultMap.put("result", result.toString());
         JSONObject result_json = getRecommendResult(pythonURL, dbSrvJson, "POST");
-        System.out.println(result_json.toString());
         return "redirect:/reco/results";
     }
 
