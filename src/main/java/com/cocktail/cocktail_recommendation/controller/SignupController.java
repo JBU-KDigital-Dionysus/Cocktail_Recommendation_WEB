@@ -24,7 +24,6 @@ import com.cocktail.cocktail_recommendation.dto.CustomerDto;
 import com.cocktail.cocktail_recommendation.service.CustomerService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/signup")
@@ -100,8 +99,11 @@ public class SignupController {
     }
 
     @PostMapping("/login.do")
-    public String login(@RequestParam(required = true) String cstId, @RequestParam(required = true) String cstPw, HttpSession session,
-                        @SessionAttribute(required = false) String redirectPage,
+    public String login(@RequestParam(required = true) String cstId,
+    		@RequestParam(required = true) String cstPw,
+    		HttpSession session,
+            @SessionAttribute(required = false) String redirectPage,
+                        
                         HttpServletResponse resp) throws IOException {
         Optional<Customer> customer = customerRepository.findById(cstId);
 
@@ -113,6 +115,7 @@ public class SignupController {
         }
         boolean result = encoder.matches(cstPw, customer.get().getCstPw());
         if (result == true) {
+        	session.setAttribute("cstId", cstId);
             session.setAttribute("loginUser", customer);
             return "redirect:/";
         } else {
@@ -129,6 +132,24 @@ public class SignupController {
         session.removeAttribute("loginUser");
         return "redirect:/";
     }
+    
+    @GetMapping("/like.do")
+	public void like() {}
+    
+    @GetMapping("/cocktailLike.do")
+    public String cocktailLike( HttpSession session, Model model
+    		){
+	 String cstId = (String) session.getAttribute("cstId");
+	 Optional<Customer> customer = customerRepository.findById(cstId);
+	  if (customer.isPresent()) {
+          model.addAttribute("cocktail", customer.get());
+          return "like/cocktailLike";
+      } else {
+          return "signup/login.do";
+      }
+  }
+    
+
 }
 
 

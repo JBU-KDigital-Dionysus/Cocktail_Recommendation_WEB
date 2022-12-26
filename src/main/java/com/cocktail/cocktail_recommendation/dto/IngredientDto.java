@@ -13,7 +13,7 @@ import lombok.Data;
 public class IngredientDto {
     @Id
     @Column(name = "CT_NO")
-    private int ctNo;
+    private String ctNo;
     @Column(name = "CT_NAME")
     private String ctName;
     @Column(name = "ING_NAME1")

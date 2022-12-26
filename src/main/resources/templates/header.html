@@ -71,13 +71,16 @@ header nav ul li:hover a:after {opacity:1;}
 
          	<li><a class="ali" href="/reco/cocktailreco">RECOMMEND</a> </li>
          	<li><a class="ali"  href="/bar/bar">BAR</a></li>
-         	<li><a class="ali" ></a></li>
+         	<li><a class="ali" style="max-width:30px;"></a></li>
           <th:block th:if="${session.loginUser==null}">
               <li><a class="ali" href="/signup/login.do">LOGIN</a></li>
           </th:block>
 
           <th:block th:unless="${session.loginUser==null}">
-              <li><a href="/signup/logout.do">LOGOUT</a></li>
+         	 <li id="likeli" style="max-width:10px;">
+         	 
+         	 <a id="like" href="/cocktail/cocktailLike.do" style="max-width:10px;   color:red;">LIKE</a></li>
+              <li><a href="/signup/logout.do" style="max-width:80px;" >LOGOUT</a></li>
           </th:block>
       </ul>
       </nav>

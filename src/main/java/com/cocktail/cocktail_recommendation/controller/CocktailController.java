@@ -31,7 +31,7 @@ public class CocktailController {
     CocktailRepository newCocktailRepository;
 
     @GetMapping("/detail.do")
-    public String detail(@RequestParam(required = true) int ctNo,
+    public String detail(@RequestParam(required = true) String ctNo,
                          Model model
                          ) {
         Optional<CocktailDto> newCocktailOpt = newCocktailRepository.findById(ctNo);
@@ -106,9 +106,8 @@ public class CocktailController {
     @GetMapping("/bar.do")
     public void bar(){}
     
-    @GetMapping("/cocktailLike.do")
-	 public void like() {}
-
+   
+    
 }
 
 
