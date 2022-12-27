@@ -1,5 +1,7 @@
 package com.cocktail.cocktail_recommendation.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -7,6 +9,7 @@ import java.util.Optional;
 import com.cocktail.cocktail_recommendation.dto.Customer;
 import com.cocktail.cocktail_recommendation.repository.CustomerRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -98,17 +101,25 @@ public class SignupController {
 
     @PostMapping("/login.do")
     public String login(@RequestParam(required = true) String cstId, @RequestParam(required = true) String cstPw, HttpSession session,
-                        @SessionAttribute(required = false) String redirectPage) {
+                        @SessionAttribute(required = false) String redirectPage,
+                        HttpServletResponse resp) throws IOException {
         Optional<Customer> customer = customerRepository.findById(cstId);
 
         if (customer.isEmpty()) {
-            System.out.println("유저가 존재하지 않습니다.");
+            resp.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<script>alert('아이디와 비밀번호를 확인해주세요.'); location.href='/signup/login.do';</script>");
+            out.flush();
         }
         boolean result = encoder.matches(cstPw, customer.get().getCstPw());
         if (result == true) {
             session.setAttribute("loginUser", customer);
             return "redirect:/";
         } else {
+            resp.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<script>alert('아이디와 비밀번호를 확인해주세요.'); location.href='/signup/login.do';</script>");
+            out.flush();
             return "redirect:/signup/login.do";
         }
     }
