@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>COCKTAIL LIKE</title>
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+:root {
+   --primary-color: #f1f3f5;
+   --accent-color: #4169e1;
+
+   --text-color: #263238;
+   --main-font: 'roboto';
+   --font-bold: 700;
+   --font-regular: 400;
+   
+    --white:#fff;
+    --smoke-white:#f1f3f5;
+    --blue:#4169e1;
+}
+input, 
+button {
+   border: none;
+   background: none;
+   outline: 0;
+}
+button {cursor: pointer}
+.SearchBox-input {/* No es un seudoelemento estandar */
+ color:white;
+   opacity: .6;
+}
+/* Chrome, Opera ySafari */
+.SearchBox-input {
+  color: white;
+}
+/* Firefox 19+ */
+.SearchBox-input {
+  color: white;
+}
+/* IE 10+ y Edge */
+.SearchBox-input {
+  color: white;
+}
+/* Firefox 18- */
+#formGroupExampleInput {
+  color: white;
+}
+
+
+
+.SearchBox {
+   --height: 3.5em;
+   display: flex;
+   
+   border-radius: var(--height);
+   background-color: var(--primary-color);
+   height: var(--height);
+}
+   .SearchBox .SearchBox-input {
+      padding-left: 2em;
+      padding-right: 1em;
+      width: 240px;
+   }
+   .SearchBox-input {
+      width: 0;
+      font-size: 1.2em;
+      color: black;
+      font-weight:bold;
+      transition: .45s;
+   }
+   .SearchBox-button {
+      display: flex;
+      border-radius: 50%;
+      width: var(--height);
+      height: var(--height);
+      background-color: var(--accent-color);
+      transition: .3s;
+   }
+   .SearchBox-button  {
+      transform: scale(.85);
+   }
+   .SearchBox-icon {
+      margin: auto;
+      color: #fff;
+   }
+
+
+@media screen and (min-width: 400px){
+   .SearchBox .SearchBox-input {
+      width: 380px;
+   }
+}
+
+
+table{
+   margin: 35px;
+   
+}
+tbody{
+   display: grid;
+    grid: '. . .';
+    row-gap: 40px;
+    column-gap: 96px;
+    margin: 30px;
+} /* gap: 30px; */
+tr {
+    justify-content: center;
+    align-items: center;
+}
+.container{
+   display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 45px 0 45px 0;
+    align-items: center;
+}
+.like-item{
+   padding: 15px;
+    display: flex;
+    flex-direction: column;
+    /* width: 250px; */
+}
+.st-tdimg{
+   width: 250px;
+     height: 300px;
+}
+.select-event .like-btn{
+   width: 40px;
+    height: 40px;
+    border: 0 none;
+    cursor: pointer;
+    outline: 0;
+    background: url(//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png) no-repeat -218px -209px;
+}
+
+</style>
+
+<body>
+<div th:insert="/header"></div>
+   <div class="container">
+   
+      <div id="hot-wrapper">
+         <div class="widget-title">
+            <h3 class="title"><p th:text=${session.cstId}></p> 님의 찜한 목록</h3>
+         </div>
+      </div>
+      <!-- 검색창 -->
+      <form method="GET" action="">
+           <div class="SearchBox">
+               <input type="text" name="" class="SearchBox-input" placeholder="영어로 입력해주세요.">
+               <button class="SearchBox-button">
+                   <i class="SearchBox-icon  material-icons">search</i>
+               </button>
+           </div>
+       </form>
+       
+   </div>
+   
+    <!-- <div class="like-content"> -->
+       <table class="like-list">
+          <tbody class="list-boby">
+             <tr class="like-item">
+                <!-- 찜버튼 -->
+                <td class="select-event">
+                   <button class="like-btn"></button>
+                </td>
+                <td class="st-item-img">
+                   <img class="st-tdimg" alt="" src="/img/cock.png">
+                </td>
+                <td id="st-item-id">Amaretto</td>
+             </tr>
+             <tr class="like-item">
+                <!-- 찜버튼 -->
+                <td class="select-event">
+                   <button class="like-btn"></button>
+                </td>
+                <td class="st-item-img">
+                   <img class="st-tdimg" alt="" src="/img/cock.png">
+                </td>
+                <td id="st-item-id">Amaretto</td>
+             </tr>
+             <tr class="like-item">
+                <!-- 찜버튼 -->
+                <td class="select-event">
+                   <button class="like-btn"></button>
+                </td>
+                <td class="st-item-img">
+                   <img class="st-tdimg" alt="" src="/img/cock.png">
+                </td>
+                <td id="st-item-id">Amaretto</td>
+             </tr>
+             <tr class="like-item">
+                <!-- 찜버튼 -->
+                <td class="select-event">
+                   <button class="like-btn"></button>
+                </td>
+                <td class="st-item-img">
+                   <img class="st-tdimg" alt="" src="/img/cock.png">
+                </td>
+                <td id="st-item-id">Amaretto</td>
+             </tr>
+          </tbody>
+       </table>
+   <!-- </div> -->
+    
+</body>
+</html>

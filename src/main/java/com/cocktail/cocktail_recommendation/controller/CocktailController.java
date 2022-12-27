@@ -63,10 +63,11 @@ public class CocktailController {
 	@GetMapping("/prefer/{ctNo}/{preferBtn}")
 	public String preferManagin(
 			@PathVariable int ctNo, @PathVariable boolean preferBtn, Model model,
+			
 			HttpSession session) {
 		String cstId = (String) session.getAttribute("cstId");
 		
-		if (cstId == null) {
+		if (cstId.isEmpty()) {
 			session.setAttribute("msg", "찜 이용은 로그인 시 가능!");
 			return "redirect:/signup/login.do";
 		}
@@ -152,5 +153,10 @@ public class CocktailController {
 	@GetMapping("/bar.do")
 	public void bar() {
 	}
+	
+	@GetMapping("/cocktailLike.do")
+	public void like() {
+	}
+
 
 }

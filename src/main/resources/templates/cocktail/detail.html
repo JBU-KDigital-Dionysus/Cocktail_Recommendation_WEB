@@ -6,11 +6,22 @@
     <link rel="stylesheet" href="/css/detail/detail.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap');
+body{
+font-family: 'Noto Sans KR', sans-serif !important;
+}
+.tags {
+margin:5px;}
+</style>
 <body>
 <div th:insert="/header"></div>
-<div class="container">
+<div class="container2">
 
-    <div class="content">
+    <div class="content2">
         <div class="ct_left_area">
             <div class="ImgBox">
                 <!-- img -->
@@ -20,38 +31,36 @@
             <!-- <div class="line">
             </div> -->
 
-            <div class="TagBox">
+            <div class="TagBox" style="display:flex;">
                 <p class="tags">
-                    <strong>계절 #</strong>
                     <th:block th:text="${cocktail.ctSeason}"></th:block>
                 </p>
                 <p class="tags">
-                    <strong>시간 #</strong>
                     <th:block th:text="${cocktail.ctTime}"></th:block>
                 </p>
                 <p class="tags">
-                    <strong>인증여부 #</strong>
                     <th:block th:text="${cocktail.ctCertified}"></th:block>
                 </p>
             </div>
         </div>
 
         <div class="ct_right_area">
-            <div class="TitleBox">
-                    <p class="title">
-                        <strong>no . </strong>
-                        <span th:text="${cocktail.ctNo}"></span>
-                    </p>
-                    <p class="title">
+            <div class="TitleBox" >
+               
+               <div style="display: flex; justify-content: space-between;">
+                    <div class="title">
                         <!-- <strong>이름 : </strong> -->
                         <th:block th:text="${cocktail.ctName}"></th:block>
-                    </p>
+                    </div>
+               		<div>
                     <a id="kakao-link-btn" href="javascript:kakaoShare()" style="display: inline-block">
-                        <img src="/img/icon/free-icon-share-icon-7893859.png"/>
+                        <img src="/img/icon/KakaoTalk_20221227_163339426_01.png">
                     </a>
                     <a id="clip-btn" href="javascript:clipboardShare()" style="display: inline-block">
-                        <img src="/img/icon/free-icon-paste-clipboard-6611457%20(1).png">
+                        <img src="/img/icon/KakaoTalk_20221227_163339426.png"/>
                     </a>
+                    </div>
+                    </div>
             </div>
 
             <div class="line">
@@ -138,8 +147,15 @@
 
             <div class="line">
             </div>
-            
+             <th:block th:if="${session.loginUser==null}">
+             찜 버튼은 로그인 시 이용가능합니다.
+          </th:block>
+
+          <th:block th:unless="${session.loginUser==null}">
+         	 
            <p th:include="/cocktail/prefer"></p>
+          </th:block>
+            
         </div>
     </div>
 
