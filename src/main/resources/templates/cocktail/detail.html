@@ -1,166 +1,191 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>COCKTAIL DETAIL</title>
-    <link rel="stylesheet" href="/css/detail/detail.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>COCKTAIL DETAIL</title>
+<link rel="stylesheet" href="/css/detail/detail.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap"
+	rel="stylesheet">
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap');
-body{
-font-family: 'Noto Sans KR', sans-serif !important;
+@import
+	url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap')
+	;
+
+body {
+	font-family: 'Noto Sans KR', sans-serif !important;
 }
+
 .tags {
-margin:5px;}
+	margin: 5px;
+}
 </style>
 <body>
-<div th:insert="/header"></div>
-<div class="container2">
+	<div th:insert="/header"></div>
+	<div class="container2">
 
-    <div class="content2">
-        <div class="ct_left_area">
-            <div class="ImgBox">
-                <!-- img -->
-                <img class="cocimg" alt="" src="/img/cocktail12.png" style="width: ">
-            </div>
+		<div class="content2">
+			<div class="ct_left_area">
+				<div class="ImgBox">
+					<!-- img -->
+					<img class="cocimg" alt="" src="/img/cocktail12.png">
+				</div>
 
-            <!-- <div class="line">
+				<!-- <div class="line">
             </div> -->
 
-            <div class="TagBox" style="display:flex;">
-                <p class="tags">
-                    <th:block th:text="${cocktail.ctSeason}"></th:block>
-                </p>
-                <p class="tags">
-                    <th:block th:text="${cocktail.ctTime}"></th:block>
-                </p>
-                <p class="tags">
-                    <th:block th:text="${cocktail.ctCertified}"></th:block>
-                </p>
-            </div>
-        </div>
-
-        <div class="ct_right_area">
-            <div class="TitleBox" >
-               
-               <div style="display: flex; justify-content: space-between;">
-                    <div class="title">
-                        <!-- <strong>이름 : </strong> -->
-                        <th:block th:text="${cocktail.ctName}"></th:block>
-                    </div>
-               		<div>
-                    <a id="kakao-link-btn" href="javascript:kakaoShare()" style="display: inline-block">
-                        <img src="/img/icon/KakaoTalk_20221227_163339426_01.png">
-                    </a>
-                    <a id="clip-btn" href="javascript:clipboardShare()" style="display: inline-block">
-                        <img src="/img/icon/KakaoTalk_20221227_163339426.png"/>
-                    </a>
-                    </div>
-                    </div>
-            </div>
-
-            <div class="line">
-            </div>
-
-            <div class="FlavorBox">
-                <p>
-                    <strong>알콜도수 </strong>
-                    <th:block th:text="${cocktail.ctAlcohol}"></th:block>
-                    %
-                </p>
-                <p>
-                    <strong>종류 </strong>
-                    <th:block th:text="${cocktail.ctKindEng}"></th:block>
-                </p>
-            </div>
-
-            <div class="line">
-            </div>
-
-            <div class=" IngredientBox">
-                <p><strong>재료</strong></p>
-                <p>
-                    <!-- <strong>재료1 :</strong> -->
-                    <th:block th:text="${cocktail.ingredient.ingName1}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit1}"></th:block>
-                </p>
-                <p>
-                    <!-- <strong>재료2 :</strong> -->
-                    <th:block th:text="${cocktail.ingredient.ingName2}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit2}"></th:block>
-                </p>
-                <p>
-                    <!-- <strong>재료3 :</strong> -->
-                    <th:block th:text="${cocktail.ingredient.ingName3}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit3}"></th:block>
-                </p>
-                <p>
-                    <!-- <strong>재료4 :</strong> -->
-                    <th:block th:text="${cocktail.ingredient.ingName4}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit4}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료5 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName5}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit5}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료6 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName6}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit6}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료7 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName7}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit7}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료8 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName8}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit8}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료9 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName9}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit9}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료10 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName10}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit10}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료11 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName11}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit11}"></th:block>
-                </p>
-                <p>
-                    <!--        <strong>재료12 :</strong>-->
-                    <th:block th:text="${cocktail.ingredient.ingName12}"></th:block>
-                    <th:block th:text="${cocktail.ingredient.ingUnit12}"></th:block>
-                </p>
-            </div>
-
-            <div class="line">
-            </div>
-             <th:block th:if="${session.loginUser==null}">
+				<div class="TagBox" style="display: flex;">
+					<th:block th:if="${session.loginUser==null}">
              찜 버튼은 로그인 시 이용가능합니다.
           </th:block>
 
-          <th:block th:unless="${session.loginUser==null}">
-         	 
-           <p th:include="/cocktail/prefer"></p>
-          </th:block>
-            
-        </div>
-    </div>
+					<th:block th:unless="${session.loginUser==null}">
+
+						<p th:include="/cocktail/prefer"></p>
+					</th:block>
+
+				</div>
+			</div>
+
+			<div class="ct_right_area">
+				<div class="TitleBox">
+
+					<div style="display: flex; justify-content: space-between;">
+						<div class="title">
+							<!-- <strong>이름 : </strong> -->
+							<th:block th:text="${cocktail.ctName}"></th:block>
+						</div>
+						<div>
+							<a id="kakao-link-btn" href="javascript:kakaoShare()"
+								style="display: inline-block"> <img
+								src="/img/icon/KakaoTalk_20221227_163339426_01.png">
+							</a> <a id="clip-btn" href="javascript:clipboardShare()"
+								style="display: inline-block"> <img
+								src="/img/icon/KakaoTalk_20221227_163339426.png" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="line"></div>
+
+				<div class="FlavorBox">
+					<p id="pname">
+						<strong>알코올 도수 </strong>
+					</p>
+
+					<p id="ppname">
+						<th:block th:text="${cocktail.ctAlcohol}"></th:block>
+						%
+					</p>
+
+					<p id="pname">
+						<strong>종류 </strong>
+					</p>
+					<p id="ppname">
+						<th:block th:text="${cocktail.ctKindEng}"></th:block>
+					</p>
+				</div>
+
+				<div class="line"></div>
+
+				<div class=" IngredientBox">
+					<p id="pname">
+						<strong>재료</strong>
+					</p>
+					<p id="ppname">
+						<!-- <strong>재료1 :</strong> -->
+						<th:block th:text="${cocktail.ingredient.ingName1}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit1}"></th:block>
+					</p>
+					<p id="ppname">
+						<!-- <strong>재료2 :</strong> -->
+						<th:block th:text="${cocktail.ingredient.ingName2}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit2}"></th:block>
+					<p id="ppname">
+					<p id="ppname">
+						<!-- <strong>재료3 :</strong> -->
+						<th:block th:text="${cocktail.ingredient.ingName3}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit3}"></th:block>
+					</p>
+					<p id="ppname">
+						<!-- <strong>재료4 :</strong> -->
+						<th:block th:text="${cocktail.ingredient.ingName4}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit4}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료5 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName5}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit5}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료6 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName6}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit6}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료7 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName7}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit7}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료8 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName8}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit8}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료9 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName9}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit9}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료10 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName10}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit10}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료11 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName11}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit11}"></th:block>
+					</p>
+					<p id="ppname">
+						<!--        <strong>재료12 :</strong>-->
+						<th:block th:text="${cocktail.ingredient.ingName12}"></th:block>
+						<th:block th:text="${cocktail.ingredient.ingUnit12}"></th:block>
+					</p>
+				</div>
+
+				<div class="line"></div>
+					
+				<div class="TagBox">
+					<ul class="tags">
+						<li><a href="#" class="tag" th:text="${cocktail.ctSeason}"></a></li>
+						<li><a href="#" class="tag" th:text="${cocktail.ctTime}"></a></li>
+						<li><a href="#" class="tag" th:text="${cocktail.ctCertified}"></a></li>
+					</ul>
 
 
-</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+	</div>
 
 </body>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -231,4 +256,4 @@ function joinform_check() {
         }
     }
 </script>
-</html> 
+</html>

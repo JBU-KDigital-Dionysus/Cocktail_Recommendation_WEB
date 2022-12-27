@@ -49,7 +49,25 @@ label{
 @keyframes input4{ 30%, 70% { transform:scale(0.5); } }
 @keyframes input5{ 30%, 70% { transform:scale(0.5); } }
 
+button {
+	font-family: inherit;
+	font-size: inherit;
+	background: #ADD8E6;
+	border: 0.22rem solid;
+	border-radius: 0.3rem;
+	padding: 0.2rem 1rem;
+	box-shadow: 0.2rem 0.2rem 0;
+	   width:100px;
+	   height:50px;
+        margin:auto !important;
+        display:block!important;
+	}
+	
 
+button:hover, 
+button:focus-visible {
+	background: orange;
+}
 
 
 
@@ -81,7 +99,7 @@ label{
   <span id="slider"></span>
 </div>
 	<br/>
-		<input type="submit" value="제출">
+		<button data-clear>결과보기</button>
 		</form>
 
 	</div>

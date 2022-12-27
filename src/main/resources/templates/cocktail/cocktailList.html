@@ -63,17 +63,19 @@ button {cursor: pointer}
 
 
 .SearchBox {
-	--height: 4em;
+	--height: 5em;
 	display: flex;
-	
+	width:750px;
 	border-radius: var(--height);
 	background-color: var(--primary-color);
 	height: var(--height);
+	margin-bottom:20px; 
+	 
 }
 	.SearchBox .SearchBox-input {
 		padding-left: 2em;
 		padding-right: 1em;
-		width: 240px;
+		width:750px;
 	}
 	.SearchBox-input {
 		width: 0;
@@ -99,19 +101,16 @@ button {cursor: pointer}
 	}
 
 
-@media screen and (min-width: 400px){
-	.SearchBox .SearchBox-input {
-		width: 500px;
-	}
-}
 
 
 
 .selector{
+	 margin:auto !important;
+     
 	margin-top:30px;
     position:relative;
     padding-left:8px;
-    width:100%;
+    width:80%;
     background-color:var(--smoke-white);
     height:80px;
     display:flex;
@@ -124,7 +123,7 @@ button {cursor: pointer}
     position:relative;
     flex-basis:calc(70% / 3);
     height:100%;
-    
+    font-size:17px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -140,7 +139,7 @@ button {cursor: pointer}
     text-align:center;
    
     border-radius:9999px;
-    line-height:500%;
+    line-height:450%;
     font-weight:900;
     transition-duration:.5s;
     transition-property:transform, color, box-shadow;
@@ -192,8 +191,11 @@ border-radius: 30px;
 <body>
 <div th:insert="/header" ></div>
 <main>
-    <h1 style="font-weight:bold; font-size:50px;" >COCKTAIL SEARCH</h1>
-   
+<br/><br/>
+<div style="width:850px; text-align:center;">
+    <h1 style="font-weight:bold; font-size:60px;" >COCKTAIL SEARCH</h1>
+  	<hr />
+  	</div>
     <br/>
     <form method="GET" action="/cocktail/search.do?query=" + ctName>
         <div class="SearchBox">
@@ -203,6 +205,7 @@ border-radius: 30px;
                 <i class="SearchBox-icon  material-icons">search</i>
             </button>
         </div>
+            <br/>
         <div class="selector">
             <div class="selecotr-item">
                 <input type="radio" id="radio1" name="ctKindEng" class="selector-item_radio" value="smoody">
@@ -228,11 +231,11 @@ border-radius: 30px;
     </form>
 
 
-    <br/><br/>
+    <br/>
 
     <div>
         <th:block th:insert ="/cocktail/list"></th:block>
-        <nav th:include="cocktail/pageNav"></nav>
+        <div th:include="cocktail/pageNav"></div>
     </div>
 </main>
 
