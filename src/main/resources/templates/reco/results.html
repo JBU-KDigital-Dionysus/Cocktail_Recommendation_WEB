@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+
+function imgUpload(){
+	console.log('imgUpload');
+	const form = document.querySelector('#sample-form');
+	var formData = new FormData();	
+	let info = 
+	{
+		"fileName":document.querySelector('#no').value,
+		"filePath": document.querySelector('#my_name').value,
+		"debug": document.querySelector('#my_contact').value,
+	}
+		
+	fetch('/CONT/upload', {
+	    method: 'POST',
+	    cache: 'no-cache',
+	    headers: {
+	        "Content-Type": "application/json",
+	      },
+	    body: JSON.stringify(info)
+	})
+	.then((response) => response.json())
+	.then((data) => {	    
+	    var list = "";
+	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){	
+	    	list += "<div><span>" + JSON.parse(data.result).data.txts[i] + "</div>";
+	    }
+	    document.getElementById("ocr_result_time").innerHTML = data.time;
+	    document.getElementById("ocr_result").innerHTML = list;
+	});
+}
+
+</script>
+
+<body>
+	<form method="post">
+		<label>ID: </label> 
+		<input type="text" name="id" id="no" />
+		<label>NAME: </label>
+		<input type="text" name="name" id="my_name" />
+		<label>AGE: </label> 
+		<input type="text" name="age" id="my_contact" />
+  <button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
+		<input type="submit" value="formSubmit"/>
+	</form>
+</body>
+</html>

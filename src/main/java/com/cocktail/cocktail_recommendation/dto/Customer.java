@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Getter
+@Data
 @Entity //TABLE을 Repository가 맵핑하겠다.
 @Table(name="customer")  //jpa가 class명을 테이블 이름으로 맵핑하기 때문에 이름이 다를때 명시
 public class Customer {
