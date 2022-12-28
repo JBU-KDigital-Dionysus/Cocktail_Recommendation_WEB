@@ -34,11 +34,7 @@ public class CustmerLikeDto {
 	 	
 	    @Column(name = "LIKE_PREFER")
 	    private boolean preferBtn;  
-	 	
-		/*
-		 * @Column(name = "LIKE_YN") private String likeYn;
-		 */
-	 	
+
 	 	
 	 	@OneToOne
 	 	@JoinColumn(name = "CST_ID" ,insertable=false, updatable=false )
