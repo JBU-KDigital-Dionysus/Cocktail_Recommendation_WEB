@@ -211,7 +211,8 @@
             </div>
         </td>
         <td class="st-item-img">
-            <img class="st-tdimg" alt="" src="/img/cock.png"
+            <img class="st-tdimg" alt="" th:src="${cocktail.getCocktailLike().ctImage} + '/' +${cocktail.getCocktailLike()
+            .ctImageName}"
                  th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         </td>
         <td id="st-item-id" th:text="${cocktail.getCocktailLike().ctName}"
