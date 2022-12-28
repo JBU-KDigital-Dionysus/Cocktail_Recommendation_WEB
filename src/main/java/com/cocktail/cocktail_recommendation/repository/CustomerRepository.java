@@ -10,5 +10,9 @@ import java.util.Optional;
 
 public interface CustomerRepository extends JpaRepository<Customer, String>{
     Optional<Customer> findCustomerByCstId(String cstId);
-    Optional<CustomerDto> getByCstIdAndCstPw(String cstId, String cstPw);
+    // Optional<CustomerDto> getByCstIdAndCstPw(String cstId, String cstPw);
+
+    Optional<Customer> getByCstIdAndCstPw(String cstId, String cstPw);
+
+    Customer getByCstId(String cstId);
 }
