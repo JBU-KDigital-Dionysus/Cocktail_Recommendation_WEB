@@ -18,7 +18,6 @@
 	padding-top: 20px;
 	/* border: 1px solid blue; */
 	/* font-size: 15px; */
-	font-family: 'Ubuntu', sans-serif;
 }
 
 #pname {
@@ -31,6 +30,18 @@
 .title {
 	font-size:45px;
 	color: #03a9f4;
+	font-family: 'Ubuntu', sans-serif !important;
+}
+
+.mtitle {
+font-family: 'Ubuntu', sans-serif !important;
+font-weight:600;
+	}
+	
+.eng{
+	font-family: 'Ubuntu', sans-serif !important;
+font-weight:600;
+
 }
 
 #ppname {
@@ -166,3 +177,17 @@
 .tag:hover::after {
    border-left-color: crimson; 
 }
+
+.youtube {
+	margin-bottom: 130px;
+	   margin:auto !important;
+        display:block!important;
+}
+
+.replyinsert{
+	margin-bottom: 100px;
+}
+.list-group {
+	margin-bottom: 60px;
+}
+

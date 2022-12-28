@@ -168,7 +168,7 @@ body {
 				</div>
 
 				<div class="line"></div>
-					
+
 				<div class="TagBox">
 					<ul class="tags">
 						<li><a href="#" class="tag" th:text="${cocktail.ctSeason}"></a></li>
@@ -176,16 +176,108 @@ body {
 						<li><a href="#" class="tag" th:text="${cocktail.ctCertified}"></a></li>
 					</ul>
 
-
-
 				</div>
 
 
 			</div>
 		</div>
+		<h2 class="eng">COKTAIL RECIPE</h2>
+		<hr />
+		<div class="youtube">
+		
+			<iframe width="730" height="415"
+				 th:src="@{https://www.youtube.com/embed/{url}(url=${cocktail.ctRecipeLink})}" 
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen>
+			</iframe>
+			
+		</div>
+		<br/>
+		<br/>
+		
+		<br/>
+		<br/>
+		<br/>
+		
+		
+		<h2>
+			<span class="mtitle " th:text="${cocktail.ctName}"
+				style="color: #03a9f4;"></span> 에 대한 다양한 의견을 공유해주세요!
+		</h2>
+		<hr />
+		<div class='replyinsert'>
+			<th:block th:if="${session.loginUser!=null}">
+				<form name="replyInserForm" class="card" action="/reply/insert.do"
+					method="post" enctype="multipart/form-data">
+					<div class="card-body">
+						<h4>
+							<span th:text="${session.loginUser.getCstNickname()}"></span>
+						</h4>
+						<input type="hidden" name="ctNo" th:value="${cocktail.ctNo}">
+						<input type="hidden" name="cstId"
+							th:value="${session.loginUser.cstId}">
+						<p class="input-group input-group-sm">
+							<label class="input-group-text" for="replyTitle">제목</label> <input
+								class="form-control" type="text" name="title" id="replyTitle"
+								placeholder="길이가 255 이하로 작성">
+						</p>
+						<div class="input-group input-group-sm">
+							<div class="form-floating">
+								<textarea class="form-control" name="contents"
+									id="replyContents" placeholder="내용"></textarea>
+								<label for="replyContents">내용</label>
+							</div>
+							<button class="btn btn-outline-primary">등록</button>
+						</div>
+					</div>
+				</form>
 
+			</th:block>
+
+			<th:block th:unless="${session.loginUser!=null}">
+
+				<span>의견 작성은 로그인 시 이용가능합니다. </span>
+			</th:block>
+
+		</div>
+
+
+
+
+		<h2 class="eng">REPLY LIST</h2>
+		<div class="list-group">
+			<th:block th:each="reply:${replyList}">
+				<div th:id="'replyLi'+${reply.replyNo}"
+					class="list-group-item list-group-item-action py-3"
+					aria-current="true">
+					<div class="d-flex w-100 justify-content-between">
+						<span></span> <span class="mb-1" th:text="${reply.cstId}">
+						</span>
+
+					</div>
+					<div class="mb-1 row">
+						<h5 class="mb-1" th:text="${reply.title}"></h5>
+						<span class="col-10" th:text="${reply.contents}"></span>
+					</div>
+					<div class="d-flex w-100 justify-content-between"><span></span>
+                            <a th:href="'/reply/replyDelete.do?replyNo='+${reply.replyNo}"
+                               class="btn btn-danger">삭제</a>
+</div>
+			
+					
+				</div>
+			</th:block>
+		</div>
 
 	</div>
+
+	<br />
+	<br />
+	<br />
+	<br />
+
+
 
 </body>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
