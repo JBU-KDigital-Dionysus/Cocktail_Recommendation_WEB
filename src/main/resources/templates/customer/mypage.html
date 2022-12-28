@@ -37,5 +37,28 @@
     </tr>
 </table>
 <a class="btn btn-primary" href="/customer/update.do">회원 수정</a>
+<a class="btn btn-danger" data-bs-toggle="modal" th:href="'#cstId'+${customer.get().cstId}">
+    회원 삭제
+</a>
+<!-- Modal -->
+<div class="modal fade" th:id="'cstId'+${customer.get().cstId}" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">삭제</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                삭제 하시겠습니까?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a th:href="'/customer/delete.do?cstId='+${customer.get().cstId}"
+                   class="btn btn-danger">삭제</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

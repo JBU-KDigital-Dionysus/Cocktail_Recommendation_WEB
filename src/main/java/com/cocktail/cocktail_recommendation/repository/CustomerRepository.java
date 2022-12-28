@@ -15,4 +15,5 @@ public interface CustomerRepository extends JpaRepository<Customer, String>{
     Optional<Customer> getByCstIdAndCstPw(String cstId, String cstPw);
 
     Customer getByCstId(String cstId);
+
 }

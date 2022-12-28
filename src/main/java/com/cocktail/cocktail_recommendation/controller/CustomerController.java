@@ -4,6 +4,7 @@ import com.cocktail.cocktail_recommendation.dto.Customer;
 import com.cocktail.cocktail_recommendation.dto.CustomerDto;
 import com.cocktail.cocktail_recommendation.repository.CustomerRepository;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -83,6 +84,33 @@ public class CustomerController {
             return "redirect:/signup/logout.do";
         } else {
             return "redirect:/customer/update.do?cstId=" + customer.getCstId();
+        }
+    }
+
+    @GetMapping("/delete.do")
+    public String customerDelete(@SessionAttribute(required = false) Customer loginUser,
+                                 HttpServletResponse resp,
+                                 HttpSession session) throws Exception {
+        Optional<Customer> customerOpt = customerRepository.getByCstIdAndCstPw(loginUser.getCstId(), loginUser.getCstPw());
+        if(customerOpt.isPresent()) {
+            if (customerOpt.get().getCstId().equals(loginUser.getCstId()))  {
+                customerRepository.deleteById(customerOpt.get().getCstId());
+                return "redirect:/signup/logout.do";
+            } else {
+                resp.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+                out.println("<script>alert('잘못된 접근 입니다.'); location.href=';</script>");
+                out.flush();
+                session.removeAttribute("loginUser");
+                return "redirect:/";
+            }
+        } else {
+            resp.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<script>alert('잘못된 접근 입니다.'); location.href=';</script>");
+            out.flush();
+            session.removeAttribute("loginUser");
+            return "redirect:/";
         }
     }
 }

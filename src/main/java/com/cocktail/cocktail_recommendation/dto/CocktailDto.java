@@ -24,6 +24,8 @@ public class CocktailDto {
     private String ctName;
     @Column(name = "CT_IMAGE")
     private String ctImage;
+    @Column(name = "CT_IMAGE_NM")
+    private String ctImageName;
     @Column(name = "CT_ALCOHOL")
     private float ctAlcohol;
     @Column(name = "CT_KIND")
