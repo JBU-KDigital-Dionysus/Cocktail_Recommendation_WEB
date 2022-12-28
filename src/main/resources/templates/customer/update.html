@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <script defer="defer" src="/js/signup/joinInsert.js"></script>
+</head>
+<body>
+<header th:include="header"></header>
+<main class="container mt-5">
+    <form name="userInsertForm" action="/customer/update.do" method="post">
+        <input type="hidden" name="cstId" th:value="${customer.cstId}">
+
+        <div class="input-container ">
+            <label class=" joinp">패스워드 </label>
+            <div class="form-floating mb-3">
+                <input class="form-control " placeholder="6-16자의 영문, 숫자, 특수문자를 조합해서 입력해주세요" type="password"name="cstPw" id="pw" onchange="check_pw()">
+                <label  for="inputUserId">영문, 숫자, 특수문자를 사용하여 6-16자의 이내로 입력해주세요.</label>
+                <span th:style="${'color: red; '}"   th:text="${valid_cstPw}"></span>
+                <div class="valid-feedback">
+                    사용 가능한 비밀번호 입니다.
+                </div>
+                <div class="invalid-feedback">
+                    <span id="check2"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <label class="joinp">패스워드 확인</label>
+            <div class="form-floating mb-3">
+                <input class="form-control"onkeyup="check_pw(event)" placeholder="" type="password" name="userPW2" id="pw2" onchange="check_pw()">
+                <label  for="inputUserId"></label>
+                <div class="valid-feedback">
+                    <span id="userPWInvalid1"></span>
+                </div>
+                <div class="invalid-feedback" >
+                    <span id="userPWInvalid2"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container"> <label class="joinp">닉네임</label>
+            <div class="form-floating mb-3">
+                <input name="cstNickname"   type="text" class="form-control" onkeyup="checkReg(event)" id="name" placeholder="ID" th:value="${customer.cstNickname}">
+                <label  for="name">특수문자를 포함하지 않은 한글 2~10자의 이내로 입력해주세요.</label>
+                <span th:style="${'color: red; '}"  th:text="${valid_cstNickname}"></span>
+            </div>
+        </div>
+
+
+        <div class="input-container"><label class="joinp">이메일</label>
+            <div class="form-floating mb-3">
+                <input id="email"  type="text" class="form-control" placeholder="happy1234@naver.com" name="cstEmail" th:value="${customer.cstEmail}">
+                <label for="inputUserId">이메일을 입력해주세요.</label>
+                <span th:style="${'color: red; '}"   th:text="${valid_cstEmail}"></span>
+            </div>
+        </div>
+        <div class="input-container"> <label class="joinp">출생연도</label>
+            <div class="form-floating mb-3">
+                <input name="cstYear" onkeyup="checkReg2(event)"   type="text" class="form-control"  id="name" placeholder="1998" >
+                <label  for="name">숫자만 입력해주세요.</label>
+                <span th:style="${'color: red; '}"  th:text="${valid_cstYear}"></span>
+            </div>
+        </div>
+
+        <div class="input-container mb-3">
+            <label for="inputState" class="joinp form-label">맛의 취향 선택</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cstFlavor" id="sweet" value="sweet">
+                <label class="form-check-label" for="inlineRadio1">단맛</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cstFlavor" id="sour" value="sour">
+                <label class="form-check-label" for="inlineRadio2">신맛</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cstFlavor" id="bitter" value="bitter">
+                <label class="form-check-label" for="inlineRadio2">쓴맛</label>
+            </div>
+        </div>
+
+
+        <br>
+        <div class="text-center " >
+            <button class="button3" type="reset">다시입력</button>
+            <button type="button" id="target_btn" class="button4" onclick="joinform_check()">수정하기</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
