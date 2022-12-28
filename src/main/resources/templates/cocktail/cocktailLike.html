@@ -10,6 +10,11 @@
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap')
+	;
     :root {
         --primary-color: #f1f3f5;
         --accent-color: #4169e1;
@@ -111,7 +116,7 @@
 
 
     table {
-        margin: 35px;
+        margin: 15px;
 
     }
 
@@ -120,7 +125,7 @@
         grid: '. . .';
         row-gap: 40px;
         column-gap: 96px;
-        margin: 30px;
+        margin: 10px;
     }
 
     /* gap: 30px; */
@@ -157,7 +162,37 @@
         outline: 0;
         background: url(//img1a.coupangcdn.com/image/dragonstone/sdp/PCSDP_imageasset_180417-min.png) no-repeat -218px -209px;
     }
+.nick {
+color:#03a9f4;
+font-weight:900;
+font-size:50px;
 
+}
+
+.title {
+font-size:30px; 
+font-weight:600;
+}
+td {
+font-size:25px; 
+font-weight:700;
+font-family: 'Ubuntu', sans-serif; 
+
+}
+td:hover {
+color:#4169e1;
+font-weight:bold ;
+cursor:pointer ;
+}
+
+.title2 {
+font-size:40px;
+font-weight:600;
+font-family: 'Ubuntu', sans-serif; 
+padding-left: 50px;
+
+
+}
 </style>
 
 <body>
@@ -167,14 +202,21 @@
     <div id="hot-wrapper">
         <div class="widget-title">
             <h3 class="title">
-                <th:block th:text="${session.loginUser.getCstNickname()}"></th:block>
-                님의 찜한 목록
+                <span class="nick" th:text="${session.loginUser.getCstNickname()}" > </span>
+               ,<br/> 찜한 목록을 확인해 보세요!
+               
             </h3>
         </div>
     </div>
 
 </div>
 
+            <hr/>
+<h3 class="title2"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34"
+					viewBox="0 0 24 24">
+					<path
+						d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" /></svg>
+COCKTAIL LIKED LIST</h3>
 <!-- <div class="like-content"> -->
 <table class="like-list">
     <tbody class="list-boby">
@@ -210,17 +252,21 @@
                 </div>
             </div>
         </td>
-        <td class="st-item-img">
+       <td id="tdid">
             <img class="st-tdimg" alt="" src="/img/cock.png"
                  th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         </td>
-        <td id="st-item-id" th:text="${cocktail.getCocktailLike().ctName}"
+        <td id="tdid" th:text="${cocktail.getCocktailLike().ctName}"
             th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
 
         </td>
     </tr>
     </tbody>
 </table>
+     <hr/>
+     <br/>
+        <br/>
+           <br/>
 
 </body>
 </html>

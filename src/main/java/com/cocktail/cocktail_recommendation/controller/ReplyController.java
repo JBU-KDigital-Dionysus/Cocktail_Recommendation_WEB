@@ -77,7 +77,7 @@ public class ReplyController {
 			}
 			replyRepository.deleteById(custmerLikeDtoOpt.get().getReplyNo());
 		} 
-		return "redirect:/cocktail/list.do";
+		return "redirect:/cocktail/detail.do?ctNo="+custmerLikeDtoOpt.get().getCtNo();		
 	}
 	
 }
