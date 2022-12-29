@@ -60,22 +60,29 @@ public class ReplyController {
 			 int replyNo,
 			HttpServletResponse resp
 			) throws IOException
-	{
+	{ 
+		if (loginUser == null) {
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = resp.getWriter();
+			out.println("<script>alert('로그인을 해주세요.'); location.href='/signup/login.do';</script>");
+			out.flush();
+		}
+		
 		Optional<ReplyDto> custmerLikeDtoOpt 
 		= replyRepository.getByCstIdAndReplyNo(loginUser.getCstId(), replyNo);
+		
+		
 		if (custmerLikeDtoOpt.isPresent()) {
-			if (loginUser == null) {
+			
+			if (!loginUser.getCstId().equals(custmerLikeDtoOpt.get().getCustomer().getCstId())) {
 				resp.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('로그인을 해주세요.'); location.href='/signup/login.do';</script>");
+				out.println("<script>alert('작성자만 삭제할 수 있습니다.'); location.href='/signup/login.do';</script>");
 				out.flush();
-			} else if (!loginUser.getCstId().equals(custmerLikeDtoOpt.get().getCustomer().getCstId())) {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('회원 정보가 다릅니다.'); location.href='/signup/login.do';</script>");
-				out.flush();
+			} else {
+				replyRepository.deleteById(custmerLikeDtoOpt.get().getReplyNo());
 			}
-			replyRepository.deleteById(custmerLikeDtoOpt.get().getReplyNo());
+			
 		} 
 		return "redirect:/cocktail/detail.do?ctNo="+custmerLikeDtoOpt.get().getCtNo();		
 	}

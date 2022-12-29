@@ -47,11 +47,7 @@
             </div> -->
 
             <div class="TagBox" style="display: flex;">
-                <th:block th:if="${session.loginUser==null}">
-                    찜 버튼은 로그인 시 이용가능합니다.
-                </th:block>
-
-                <th:block th:unless="${session.loginUser==null}">
+              
 
                     <p th:include="/cocktail/prefer"></p>
                 </th:block>

@@ -174,6 +174,7 @@ public class CocktailController {
 				out.println("<script>alert('로그인을 해주세요.'); location.href='/signup/login.do';</script>");
 				out.flush();
 			}
+			
 			Optional<CustmerLikeDto> custmerLikeDtoOpt = likeRepository.getByCstIdAndCtNo(loginUser.getCstId(), ctNo);
 			if (custmerLikeDtoOpt.isEmpty()) {
 				CustmerLikeDto like = new CustmerLikeDto();
@@ -200,14 +201,17 @@ public class CocktailController {
 	@GetMapping("/preferDelete.do")
 	public String preferDelete(@SessionAttribute(required = false) Customer loginUser, int ctNo,
 			HttpServletResponse resp) throws IOException {
+		
+		if (loginUser == null) {
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = resp.getWriter();
+			out.println("<script>alert('로그인을 해주세요.'); location.href='/signup/login.do';</script>");
+			out.flush();
+		} 
+		
 		Optional<CustmerLikeDto> custmerLikeDtoOpt = likeRepository.getByCstIdAndCtNo(loginUser.getCstId(), ctNo);
 		if (custmerLikeDtoOpt.isPresent()) {
-			if (loginUser == null) {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('로그인을 해주세요.'); location.href='/signup/login.do';</script>");
-				out.flush();
-			} else if (!loginUser.getCstId().equals(custmerLikeDtoOpt.get().getCustomerLike().getCstId())) {
+		 if (!loginUser.getCstId().equals(custmerLikeDtoOpt.get().getCustomerLike().getCstId())) {
 				resp.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = resp.getWriter();
 				out.println("<script>alert('회원 정보가 다릅니다.'); location.href='/signup/login.do';</script>");
@@ -241,7 +245,9 @@ public class CocktailController {
 								+ ((int) (Math.random() * 10000)) + "." + contentTypes[1];
 						Path path = Paths.get(imgSavePath + "/" + fileName);
 						img.transferTo(path);
+						String imgpath = "img/cocktail_img";
 						cocktail.setCtImgNm(fileName);
+						cocktail.setCtImage(imgpath);
 						saveBoard = newCocktailRepository.save(cocktail);
 					} 
 				}
