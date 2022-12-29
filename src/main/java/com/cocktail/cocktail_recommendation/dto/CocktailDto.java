@@ -8,9 +8,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.Setter;
 
 
 @Getter
+@Setter
 @Entity
 @Table(name="cocktail_m")
 public class CocktailDto {
@@ -22,6 +24,8 @@ public class CocktailDto {
     private String ctName;
     @Column(name = "CT_IMAGE")
     private String ctImage;
+    @Column(name = "CT_IMAGE_NM")
+    private String ctImgNm;
     @Column(name = "CT_ALCOHOL")
     private float ctAlcohol;
     @Column(name = "CT_KIND")
@@ -38,6 +42,8 @@ public class CocktailDto {
     private String ctRecipe;
     @Column(name = "CT_RECIPE_LINK")
     private String ctRecipeLink;
+    
+    
     @OneToOne
     @JoinColumn(name = "CT_NO", updatable = false)
     private IngredientDto ingredient;

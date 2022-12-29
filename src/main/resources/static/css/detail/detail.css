@@ -1,91 +1,193 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
-*{
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap')
+	;
+
+* {
 	margin: 0;
-	padding:0;
+	padding: 0;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.content{
-		display: flex;
-  		justify-content : center;
-	    width: 100%;
-	    height: 100vh;
-	   	padding-top:100px;
-	    /* border: 1px solid blue; */
-	    /* font-size: 15px; */
-	    font-family: 'Ubuntu', sans-serif;
- 	}
-	.content:after {
-	    content: "";
-	    clear: both;
-	    display: table;
-	}  
-	  	
-  	.ct_left_area{
-		float: left;
-	    width: 50%;
-	    height: 855px;
-	    border: 1px solid #c6c6cf;
-	    margin-right: 50px;
-  		background-color: black;
-	    /* opacity:0.5; */
-  		border-radius: 20px;
-  		color: white;
-  	}
-  	
-  		.ImgBox{
-  			height: 80%;
-  		}
-  			.cocimg{
-  				width: 100%;
-  				height: 100%;
-  				border-radius: 20px 20px 0 0;
-  			}
-  		.TagBox{
-  			margin-top: 20px;
-  			margin-left: 30px;
-  			line-height: 40px;
-  			font-size: 19px;
-  		}
-  		
-  		
-  	.line{
-		    width: 100%;
-		    border-top:1px solid #c6c6cf;  		
-  		}
-  		
+.content2 {
+	display: flex;
+	justify-content2: center;
+	
+	height: 100vh;
+	padding-top: 20px;
+	/* border: 1px solid blue; */
+	/* font-size: 15px; */
+}
 
-  	.ct_right_area{
-	    float: left;
-	    width: 40%;
-	    height: 855px;
-	    /* border: 1px solid black; */
-	    
-	    /* background-color: black;
+#pname {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	color:rgba(32, 25, 139, 0.815);
+	font-weight: 600;
+}
+
+.title {
+	font-size:45px;
+	color: #03a9f4;
+	font-family: 'Ubuntu', sans-serif !important;
+}
+
+.mtitle {
+font-family: 'Ubuntu', sans-serif !important;
+font-weight:600;
+	}
+	
+.eng{
+	font-family: 'Ubuntu', sans-serif !important;
+font-weight:600;
+
+}
+
+#ppname {
+	font-size: 20px;
+}
+
+.content2:after {
+	clear: both;
+	display: table;
+}
+
+.ct_left_area {
+	float: left;
+	width:500px;
+	height: 755px;
+	border: 1px solid #c6c6cf;
+	margin-right: 50px;
+	background-color: #eee;
+	/* opacity:0.5; */
+	border-radius: 20px;
+	color: black;
+}
+
+.ImgBox {
+	width:100%;
+	height: 90%;
+}
+
+.cocimg {
+	width: 100%;
+	height: 90%;
+	border-radius: 20px 20px 0 0;
+}
+
+.TagBox {
+	margin-top: 10px;
+	margin-left: 20px;
+	line-height: 40px;
+	font-size: 19px;
+}
+
+.line {
+	width: 100%;
+	border-top: 1px solid #c6c6cf;
+}
+
+.ct_right_area {
+	float: left;
+	width: 50%;
+	height: 855px;
+	/* border: 1px solid black; */
+
+	/* background-color: black;
 	    opacity:0.5;
   		border-radius: 20px;
   		color: white; */
-	    
-  	}
-  		
-  		.TitleBox{	
-  			/* border: 1px solid black; */
-  			padding: 20px 20px 20px 25px;
-  			font-size: 33px;
-  			font-weight: 600;			
-  		}
-  			
-  		
-  		.IngredientBox{
-		    /* border: 1px solid blue; */
-		    line-height: 35px; 
-		    padding: 15px 20px 20px 25px;
-		    font-size: 19px;
-		    		
-  		}
-  		.FlavorBox{
-		    /* border: 1px solid black; */
-		    line-height: 35px;
-		    padding: 15px 20px 20px 25px;
-		    font-size: 19px;
-  		}
+}
+
+.TitleBox {
+	/* border: 1px solid black; */
+	padding: 0 20px 20px 25px;
+	font-size: 33px;
+	font-weight: 600;
+}
+
+.IngredientBox {
+	/* border: 1px solid blue; */
+	line-height: 35px;
+	padding: 15px 20px 20px 25px;
+	font-size: 19px;
+}
+
+.FlavorBox {
+	/* border: 1px solid black; */
+	line-height: 35px;
+	padding: 15px 20px 20px 25px;
+	font-size: 19px;
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.tags li {
+  float: left; 
+}
+
+.tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 30px 0 43px;
+  position: relative;
+  margin: 0 30px 30px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 16px;
+  left: 10px;
+  position: absolute;
+  width: 16px;
+  top: 10px;
+}
+
+.tag::after {
+  background: #fff;
+  border-bottom: 23px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.tag:hover::after {
+   border-left-color: crimson; 
+}
+
+.youtube {
+	margin-bottom: 130px;
+	   margin:auto !important;
+        display:block!important;
+}
+
+.replyinsert{
+	margin-bottom: 100px;
+}
+.list-group {
+	margin-bottom: 60px;
+}
+

@@ -100,7 +100,8 @@ public class SignupController {
     }
 
     @PostMapping("/login.do")
-    public String login(@RequestParam(required = true) String cstId, @RequestParam(required = true) String cstPw, HttpSession session,
+    public String login(@RequestParam(required = true) String cstId, 
+    		@RequestParam(required = true) String cstPw, HttpSession session,
                         @SessionAttribute(required = false) String redirectPage,
                         HttpServletResponse resp) throws IOException {
         Optional<Customer> customer = customerRepository.findById(cstId);
@@ -113,7 +114,8 @@ public class SignupController {
         }
         boolean result = encoder.matches(cstPw, customer.get().getCstPw());
         if (result == true) {
-            session.setAttribute("loginUser", customer);
+			session.setAttribute("cstId", cstId);
+            session.setAttribute("loginUser", customer.get());
             return "redirect:/";
         } else {
             resp.setContentType("text/html; charset=UTF-8");
@@ -129,6 +131,8 @@ public class SignupController {
         session.removeAttribute("loginUser");
         return "redirect:/";
     }
+    
+    
 }
 
 

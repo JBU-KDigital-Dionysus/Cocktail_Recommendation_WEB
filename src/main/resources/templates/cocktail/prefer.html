@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<a th:href="@{/cocktail/prefer/{ctNo}/true(ctNo=${cocktail.ctNo})}"
+		th:classappend="${(likePrefer!=null && likePrefer.preferBtn)?'active':''}"
+		class="rounded-pill btn btn-outline-danger">
+		<i class="bi bi-hand-thumbs-up"></i>
+		<th:block >찜</th:block>
+	</a>
+	
+	<!-- <a  th:href="@{/cocktail/prefer/{boardNo}/false(boardNo=${board.boardNo})}"
+		th:classappend="${(boardPrefer!=null && !boardPrefer.prefer)?'active':''}"
+		class="rounded-pill btn btn-outline-primary"> 
+		<i class="bi bi-hand-thumbs-down"></i>
+		<th:block th:text="${board.bads}"></th:block>
+	</a> -->
+
+</html>
+
