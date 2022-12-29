@@ -5,7 +5,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap')
+	;
+
 body {
    background: #FCFCFC;
    color: #222;
@@ -14,50 +21,45 @@ body {
       Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
    margin-bottom:50px; 
 }
-
-
-.choose {
-   margin: auto;
+input[type="radio"]{
+	-webkit-appearance:none;
+}
+label{
+	height: 180px;
+	width: 240px;
+	border:6px solid #03a9f4;
+	position: relative;
+	margin: auto;
+	border-radius: 10px;
+	color: #03a9f4;
+	transition: 0.5s;
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1280px-HTML5_logo_and_wordmark.svg.png");
+	
+	
+}
+.fa{
+	font-size: 80px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-80%);
+}
+label>span{
+	font-size: 25px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,80%);
+	font-family: "Poppins",sans-serif;
+	font-weight: 500;
+}
+input[type="radio"]:checked + label{ 
+	background-color: #03a9f4;
+	color: white;
+	box-shadow: 0 15px 45px rgba(24,249,141,0.2);
 }
 
-.choose label {
-   text-align: center;
-   position: relative;
-   cursor: pointer;
-   
-}
-
-.choose label span {
-   background: #f1c135; color : #FFF;
-   line-height: 100px;
-   height: 100px;
-   padding: 0 16px;
-   display: block;
-   transition: all .2s ease;
-   color: #FFF;
-}
-
-.choose label:first-of-type span {
-   border-top-left-radius: 5px;
-   border-bottom-left-radius: 5px;
-   border-right: 0;
-}
-
-.choose label:last-of-type span {
-   border-top-right-radius: 5px;
-   border-bottom-right-radius: 5px;
-   border-left: 0;
-}
-
-.choose label input {
-   display: none
-}
-
-.choose label input:checked+span {
-   box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
-}
-
-
+.btn {width:200px !important; }
 #radios{
   position:relative;
   width:50%;
@@ -67,20 +69,24 @@ input[type="radio"]{
   position:absolute;
   right:1000%;
 }
-.labelid{
-  float:left;
-  width:15%; padding-bottom:15%;
-  margin:0 2.5%;
-  background: #F1C135;
-  border-radius:50%;
+
+.labelid1,.labelid2, .labelid3, .labelid4 , .labelid5, .labelid {
+  height:20px !important; 
+  float:left !important;
+  width:15% !important; padding-bottom:14% !important;
+  margin:0 2.5% !important ;
+  background: #03a9f4 !important; 
+  border-radius:50% !important;
   cursor:pointer;
-}
+  border:3px solid #03a9f4 !important;
+}  
+
 #slider{
   position:absolute;
   left:0%; top:0;
   width:10%; padding-bottom:10%;
   margin:2.5% 0 0 5%;
-  background:white; 
+  background: rgba(255, 255, 255, 0.9); 
   transition:transform 1s;
   border-radius:50%;
   animation-timing-function: ease-in-out;
@@ -100,25 +106,10 @@ input[type="radio"]{
 @keyframes input4{ 30%, 70% { transform:scale(0.5); } }
 @keyframes input5{ 30%, 70% { transform:scale(0.5); } }
 
-button {
-   font-family: inherit;
-   font-size: inherit;
-   background: pink;
-   border: 0.22rem solid;
-   border-radius: 0.3rem;
-   padding: 0.2rem 1rem;
-   box-shadow: 0.2rem 0.2rem 0;
-      width:100px;
-      height:50px;
-        margin:auto !important;
-        display:block!important;
-   }
-   
-
-button:hover, 
-button:focus-visible {
-   background: orange;
+#input1 {
+background: black !important;
 }
+
 .animate-charcter
 {
    text-transform: uppercase;
@@ -132,14 +123,14 @@ button:focus-visible {
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
-  color: #fff; 
+  color: #fff;
   background-clip: text;
-  text-fill-color: transparent;
+  text-fill-color: transparent; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
   display: inline-block;
-      font-size: 50px;
+   font-size: 50px;
 }
 
 @keyframes textclip {
@@ -147,7 +138,55 @@ button:focus-visible {
     background-position: 200% center;
   }
 }
-.btn {width:200px !important; }
+
+.btn{
+margin-top:50px !important; 
+ margin:auto !important;
+        display:block!important;
+        height: 60px ;
+        }
+       .choose {
+        margin:auto !important;
+        display:block!important;
+        text-align:center;
+       }
+strong ,h3, span{
+  font-family: 'Ubuntu', sans-serif !important;
+  }
+  
+  h3 {
+  font-size:50px; 
+  font-weight:bold; 
+  } 
+   
+  .labelid1 {
+    background:#c4e7ff  !important; 
+    border:3px solid #c4e7ff !important; 
+  } 
+  
+  .labelid2 {
+    background:#9dd8ff  !important; 
+    border:3px solid #9dd8ff !important;
+  } 
+  
+  .labelid3 {
+    background:#58bcff  !important; 
+    border:3px solid #58bcff !important;
+  } 
+  
+  .labelid4 {
+    background:#3aa3ff  !important; 
+    border:3px solid #3aa3ff !important;
+  } 
+  
+  .labelid5 {
+    background:#1a89ff  !important; 
+    border:3px solid #1a89ff !important;
+  } 
+  .radios {
+  font-size:30px; font-weight:bold;  
+  }
+  
 </style>
 </head>
 <body>
@@ -159,65 +198,103 @@ button:focus-visible {
          <br/>
       <hr />
       <h2><strong class="animate-charcter" style="font-size:35px;">STEP.3</strong> 추천 받고 싶은 칵테일 태그를 선택해주세요.</h2>
-      <br />
-   
+      <br /><br/>
+  
       <form name="userInsertForm" action="/reco/cocktailreco3" method="post">
          <div>
-            <h3>SEASON</h3>
+            <h3 style="font-size:30px;   font-weight:bold; " >SEASON</h3>
+         </div>
+         <br />
+     <div class="choose">
+         <input type="radio" name="SEASON" id="SUMMER" value="SUMMER">
+			<label for="SUMMER"><i class="fa fa-free-code-camp" aria-hidden="true" ></i>
+    			<span>SUMMER</span>
+			</label>
+			<input type="radio" name="SEASON" id="HOLLWEEN" value="HOLLWEEN">
+			<label for="HOLLWEEN">  <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+    			<span>HOLLWEEN</span>
+			</label>
+			<input type="radio" name="SEASON" id="SEASON" value="CHRISTMAS">
+			<label for="SEASON"><i class="fa fa-tree" aria-hidden="true" ></i>
+    			<span>CHRISTMAS</span>
+			</label>
+			<input type="radio" name="SEASON" id="WINTER" value="WINTER">
+			<label for="WINTER"><i class="fa fa-snowflake-o" aria-hidden="true" ></i>
+    			<span>WINTER</span>
+			</label>
+  </div>
+      <br />
+         <div>
+              <h3 style="font-size:30px;   font-weight:bold; " >TIME</h3>
          </div>
          <br />
          <div class="choose">
-            <label><input type="radio" value="SUMMER" name="SEASON"
-               checked /><span>SUMMER</span></label> <label><input type="radio"
-               value="HOLLWEEN" name="SEASON" /><span>HOLLWEEN</span></label> <label><input
-               type="radio" value="CHRISTMAS" name="SEASON" /><span>CHRISTMAS</span></label>
-            <label><input type="radio" value="WINTER" name="SEASON" /><span>WINTER</span></label>
+         <input type="radio" name="TIME" id="DAY" value="DAY">
+			<label for="DAY"><i class="fa fa-sun-o" aria-hidden="true" ></i>
+    			<span>DAY</span>
+			</label>
+			<input type="radio" name="TIME" id="ALLTIME" value="ALLTIME">
+			<label for="ALLTIME"><i class="fa fa-plus-circle" aria-hidden="true" ></i>
+    			<span>ALLTIME</span>
+			</label>
+			<input type="radio" name="TIME" id="NIGHT" value="NIGHT">
+			<label for="NIGHT">  <i class="fa fa-moon-o" aria-hidden="true"></i>
+    			<span>NIGHT</span>
+			</label>
+			
+		
          </div>
 
          <br />
          <div>
-            <h3>TIME</h3>
+            <h3 style="font-size:30px;   font-weight:bold; " >CERTIFIED</h3>
          </div>
          <br />
          <div class="choose">
-            <label><input type="radio" value="DAY" name="TIME" checked /><span>DAY</span></label>
-            <label><input type="radio" value="NIGHT" name="TIME" /><span>NIGHT</span></label>
-            <label><input type="radio" value="ALLTIME" name="TIME" /><span>ALLTIME</span></label>
-         </div>
-
-         <br />
-         <div>
-            <h3>CERTIFIED</h3>
-         </div>
-         <br />
-         <div class="choose">
-            <label><input type="radio" value="IBA" name="CERTIFIED"
-               checked /><span>IBA</span></label> <label><input type="radio"
-               value="HOMEMADE" name="CERTIFIED" /><span>HOMEMADE</span></label> <label><input
-               type="radio" value="ALL" name="CERTIFIED" checked /><span>ALL</span></label>
+           <input type="radio" name="CERTIFIED" id="IBA" value="IBA">
+			<label for="IBA"><i class="fa fa-credit-card" aria-hidden="true" ></i>
+    			<span>IBA</span>
+			</label>
+			<input type="radio" name="CERTIFIED" id="ALL" value="ALL">
+			<label for="ALL"><i class="fa fa-plus-circle" aria-hidden="true" ></i>
+    			<span>ALL</span>
+			</label>
+			<input type="radio" name="CERTIFIED" id="HOMEMADE" value="HOMEMADE">
+			<label for="HOMEMADE">  <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+    			<span>HOMEMADE</span>
+			</label>
+			
          </div>
 
       
+<br/><br/><br/>      
 <br/><br/><br/>
       <hr />
       <h2><strong class="animate-charcter" style="font-size:35px;">STEP.4</strong> 선호하는 알코올 도수를 선택해주세요.</h2>
       <br />
-   <br/><br/>
-
+   <br/><br/>      <br/><br/>   
+<br/><br/><br/>
+		<div id="radios"style="display: flex; justify-content: space-between;">
+		<span style="  font-size:25px; font-weight:bold; ">ROW</span>	
+		<span style="  font-size:25px; font-weight:bold; ">HIGH </span>
+		</div>
          <div id="radios">
-            <label for="input1" class="labelid"></label> <input id="input1" name="ctAlcohol"
+       
+            <label for="input1" class="labelid1"></label> <input id="input1" name="ctAlcohol"
                type="radio" value="0" checked />
-               <label class="labelid" for="input2"></label> <input id="input2"
+               <label class="labelid2" for="input2"></label> <input id="input2"
                name="ctAlcohol" value="1"  type="radio" />
-               <label class="labelid" for="input3"></label> 
+               <label class="labelid3" for="input3"></label> 
                <input id="input3" name="ctAlcohol" value="2"  type="radio" />
-                <label class="labelid"for="input4"></label>
+                <label class="labelid4"for="input4"></label>
             <input id="input4" name="ctAlcohol" type="radio" value="3"  />
-            <label class="labelid" for="input5"></label>
+            <label class="labelid5" for="input5"></label>
             <input id="input5" name="ctAlcohol" type="radio"  value="4" />
             <span id="slider"></span>
+      
          </div>
-         <br /><br /><br/>   <br /><br /><br/><br/><br/>
+         <br /><br /><br/>   <br /><br /><br/><br/><br/>     <br/><br/>    
+<br/><br/><br/>
              
     <button type="button" class="btn btn-primary btn-lg" onclick="location.href='http://localhost:8080/reco/cocktailreco3';">
     결과보기</button>
@@ -226,5 +303,6 @@ button:focus-visible {
 <br/><br/><br/>
 
    </div>
+
 </body>
 </html>
