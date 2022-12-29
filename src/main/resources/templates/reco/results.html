@@ -7,47 +7,32 @@
 <script>
 
 function imgUpload(){
-	console.log('imgUpload');
-	const form = document.querySelector('#sample-form');
-	var formData = new FormData();	
-	let info = 
-	{
-		"fileName":document.querySelector('#no').value,
-		"filePath": document.querySelector('#my_name').value,
-		"debug": document.querySelector('#my_contact').value,
-	}
-		
+	// const personalFlavors = document.querySelector('#fileInput');
+
+	// var formData = new FormData();
+	// formData.append("personalFlavors",personalFlavors.value);
 	fetch('/CONT/upload', {
 	    method: 'POST',
 	    cache: 'no-cache',
-	    headers: {
-	        "Content-Type": "application/json",
-	      },
-	    body: JSON.stringify(info)
+	    body: ""
 	})
 	.then((response) => response.json())
-	.then((data) => {	    
+	.then((data) => {
 	    var list = "";
-	    for(var i=0; i<JSON.parse(data.result).data.txts.length; i++){	
-	    	list += "<div><span>" + JSON.parse(data.result).data.txts[i] + "</div>";
-	    }
-	    document.getElementById("ocr_result_time").innerHTML = data.time;
-	    document.getElementById("ocr_result").innerHTML = list;
+		let flavorInputs = JSON.parse(data.result).data.txts.trim().split(',')
+		for(var idx = 0; idx<flavorInputs.length; idx++){
+			list += "<div><span>" + flavorInputs[idx] + "</span></div>";
+		}
+	    document.getElementById("reco_result").innerHTML = list;
 	});
 }
-
 </script>
 
 <body>
-	<form method="post">
-		<label>ID: </label> 
-		<input type="text" name="id" id="no" />
-		<label>NAME: </label>
-		<input type="text" name="name" id="my_name" />
-		<label>AGE: </label> 
-		<input type="text" name="age" id="my_contact" />
-  <button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
-		<input type="submit" value="formSubmit"/>
-	</form>
+	<button type="button" id="insert" onclick=imgUpload()>결과 확인</button>
+	<br/>
+	<br/>
+	<span style="font-size: 24px;">처리 결과 : </span>
+	<div id="reco_result"></div>
 </body>
 </html>
