@@ -12,6 +12,10 @@ body {
   text-align:center;
   font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
 }
+img{
+	width: 100%;
+	height: 100%;
+}
 .parent {
 	width: 90%;
 	margin: 10px auto;
@@ -19,7 +23,7 @@ body {
 }
 
 .first {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	flex: 1;
 	width: 150px; 
 	height: 300px;
@@ -27,10 +31,11 @@ body {
 }
 
 .second {
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	flex: 1;
 	margin: 0px 5%;
-	width: 30%;
+	width: 150px; 
+	height: 300px;
 	box-sizing: border-box;
 }
 
@@ -41,25 +46,27 @@ body {
 }
 
 .first2 {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	flex: 1;
 	max-width: 50%;
-	height: 300px;
+	height: 310px;
 	box-sizing: border-box;
 }
 
 .second2 {
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	flex: 1;
-	margin: 0px 5%;
-	max-width: 50%; 
+	margin: 0 5%;
+	max-width: 50%;
+	height: 310px;
 	box-sizing: border-box;
 }
 
 .third {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	flex: 1;
-	width: 30%;
+	width: 150px; 
+	height: 300px;
 	box-sizing: border-box;
 }
 
@@ -181,9 +188,9 @@ button:focus-visible {
 		<form  action="/reco/cocktailreco1" method="post">
 	
 	<div class="select">
-				<div class="first">first</div>
-				<div class="second">second</div>
-				<div class="third">third</div>
+				<div class="first"><img alt="" src="/img/recoimg/hot.jpg"></div>
+				<div class="second"><img alt="" src="/img/recoimg/fruit.jpg"></div>
+				<div class="third"><img alt="" src="/img/recoimg/smoody.jpg"></div>
 			</div>
 			<div class="select">
 
@@ -202,8 +209,8 @@ button:focus-visible {
 			</div>
 			<br>
 			<div class="select2">
-				<div class="first2">first</div>
-				<div class="second2">second</div>
+				<div class="first2"><img alt="" src="/img/recoimg/refreshing.jpg"></div>
+				<div class="second2"><img alt="" src="/img/recoimg/dry.png"></div>
 			</div>
 			<div class="select">
 
