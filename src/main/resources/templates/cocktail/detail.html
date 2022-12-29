@@ -252,7 +252,7 @@
                  class="list-group-item list-group-item-action py-3"
                  aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <span></span> <span class="mb-1" th:text="${reply.cstId}">
+                    <span></span> <span class="mb-1" th:text="${reply.getCustomer().getCstNickname()} + '(' + ${reply.getCustomer().cstId} + ')'">
                   </span>
 
                 </div>

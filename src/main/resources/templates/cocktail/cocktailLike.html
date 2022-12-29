@@ -253,7 +253,7 @@ COCKTAIL LIKED LIST</h3>
             </div>
         </td>
         <td class="st-item-img">
-            <img class="st-tdimg" alt="" th:src="'/'+${cocktail.ctImage} + '/' +${cocktail.ctImgNm}" th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
+            <img class="st-tdimg" alt="" th:src="'/'+${cocktail.getCocktailLike().ctImage} + '/' +${cocktail.getCocktailLike().ctImgNm}" th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         </td>
         <td id="tdid" th:text="${cocktail.getCocktailLike().ctName}"
             th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
