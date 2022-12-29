@@ -235,6 +235,21 @@ border-radius: 30px;
 
     <div>
         <th:block th:insert ="/cocktail/list"></th:block>
+       
+     <div style="display: flex; justify-content: space-between; margin-right:30px;">
+     <div></div>
+                <th:block th:if="${session.loginUser==null}">
+                    칵테일 추가는 로그인시 가능합니다. 
+                </th:block>
+
+                <th:block th:unless="${session.loginUser==null}">
+       
+       	 <button type="button" class="btn btn-info" onclick="location.href='cocktailInsert.do' ">칵테일 추가</button>
+		
+                </th:block>
+
+            </div>
+   
         <div th:include="cocktail/pageNav"></div>
     </div>
 </main>
