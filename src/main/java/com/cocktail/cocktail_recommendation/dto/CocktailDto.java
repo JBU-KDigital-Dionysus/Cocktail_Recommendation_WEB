@@ -25,11 +25,7 @@ public class CocktailDto {
     @Column(name = "CT_IMAGE")
     private String ctImage;
     @Column(name = "CT_IMAGE_NM")
-<<<<<<< HEAD
-    private String ctImageName;
-=======
     private String ctImgNm;
->>>>>>> main
     @Column(name = "CT_ALCOHOL")
     private float ctAlcohol;
     @Column(name = "CT_KIND")
