@@ -17,9 +17,12 @@ body {
 	margin: 10px auto;
 	display: flex;
 }
-
+img{
+	width: 100%;
+	height: 100%;
+}
 .first {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	flex: 1;
 	width: 30%;
 	height: 500px;
@@ -27,17 +30,19 @@ body {
 }
 
 .second {
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	flex: 1;
 	margin: 0px 5%;
 	width: 30%;
+	height: 500px;
 	box-sizing: border-box;
 }
 
 .third {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	flex: 1;
 	width: 30%;
+	height: 500px;
 	box-sizing: border-box;
 }
 
@@ -95,26 +100,73 @@ body {
 	background-color: #333;
 	color: #fff;
 }
+button {
+	font-family: inherit;
+	font-size: inherit;
+	background: pink;
+	border: 0.22rem solid;
+	border-radius: 0.3rem;
+	padding: 0.2rem 1rem;
+	box-shadow: 0.2rem 0.2rem 0;
+	   width:100px;
+	   height:50px;
+        margin:auto !important;
+        display:block!important;
+	}
+	
+
+button:hover, 
+button:focus-visible {
+	background: orange;
+}
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient( 
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 50px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
 </style>
 </head>
 <body>
 	<header th:include="./header"></header>
 
 	<div class="container">
-
-			<h1 style="font-weight:bold;  font-size:50px;">COKCTAIL RECOMMENDATION</h1>
+<br/>
+		<h1 style="font-weight:bold;  font-size:50px;">COKCTAIL RECOMMENDATION</h1>
 			<br/>
 		<hr />
-		<h2><strong>STEP.2</strong> 좋아하는 맛을 선택해주세요.</h2>
+		<h2><strong class="animate-charcter" style="font-size:35px;">STEP.2</strong> 좋아하는 맛을 선택해주세요.</h2>
 		<br />
 		
 
 		<form name="userInsertForm" action="/reco/cocktailreco2" method="post">
 	
 	<div class="select">
-				<div class="first">first</div>
-				<div class="second">second</div>
-				<div class="third">third</div>
+				<div class="first"><img alt="" src="/img/recoimg/sweet.jpg"></div>
+				<div class="second"><img alt="" src="/img/recoimg/bitter.jpg"></div>
+				<div class="third"><img alt="" src="/img/recoimg/sour.jpg"></div>
 			</div>
 			<div class="select">
 
@@ -131,11 +183,13 @@ body {
 						for="select3">SOUR</label>
 				</div>
 			</div>
-			<br>
+			<br/>
+			<br/>
+			<br/><br/>
 	
 	
 	
-		<input type="submit" value="제출">
+		<button data-clear>NEXT</button>
 		</form>
 <br/><br/><br/>
 	</div>

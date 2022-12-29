@@ -25,7 +25,11 @@ public class CocktailDto {
     @Column(name = "CT_IMAGE")
     private String ctImage;
     @Column(name = "CT_IMAGE_NM")
+<<<<<<< HEAD
     private String ctImageName;
+=======
+    private String ctImgNm;
+>>>>>>> main
     @Column(name = "CT_ALCOHOL")
     private float ctAlcohol;
     @Column(name = "CT_KIND")
@@ -41,8 +45,9 @@ public class CocktailDto {
     @Column(name = "CT_RECIPE")
     private String ctRecipe;
     @Column(name = "CT_RECIPE_LINK")
-    
     private String ctRecipeLink;
+    
+    
     @OneToOne
     @JoinColumn(name = "CT_NO", updatable = false)
     private IngredientDto ingredient;

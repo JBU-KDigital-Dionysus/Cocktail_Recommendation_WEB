@@ -12,6 +12,7 @@
         th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">
         <!-- <td th:text="${cocktail.ctNo}"></td> -->
         <td id="tdid">
+<<<<<<< HEAD
             <img class="tdimg" alt="" th:src="${cocktail.ctImage} + '/' +${cocktail.ctImageName}">
         </td>
         <td id="tdid" th:text="${cocktail.ctName}"></td>
@@ -19,5 +20,13 @@
     </tbody>
 </table>
 <nav th:include="search/pageNav"></nav>
+=======
+            <img class="tdimg" alt="" src="/img/cocktail12.png">
+        </td>
+        <td id="tdid" th:text="${cocktail.ctName}" ></td>
+    </tr>
+    </tbody>
+</table>
+>>>>>>> main
 </body>
 </html>
