@@ -2,198 +2,220 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>COCKTAIL SEARCH</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>COCKTAIL LIST</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-<style>
+    <style>
 
-:root {
-	--primary-color: #f1f3f5;
-	--accent-color: #4169e1;
+        :root {
+            --primary-color: #f1f3f5;
+            --accent-color: #4169e1;
 
-	--text-color: #263238;
-	--main-font: 'roboto';
-	--font-bold: 700;
-	--font-regular: 400;
+            --text-color: #263238;
+            --main-font: 'roboto';
+            --font-bold: 700;
+            --font-regular: 400;
 
-	 --white:#fff;
-    --smoke-white:#f1f3f5;
-    --blue:#4169e1;
-}
+            --white: #fff;
+            --smoke-white: #f1f3f5;
+            --blue: #4169e1;
+        }
 
-body {
-	color: var(--text-color) !important;
-	font-family: 'Noto Sans KR', sans-serif !important;
-}
-main{
-	display: flex!important;
-	flex-direction: column!important;
-	align-items: center!important;
-}
-h1 {font-family: 'Noto Sans KR', sans-serif; }
-input,
-button {
-	border: none;
-	background: none;
-	outline: 0;
-}
-button {cursor: pointer}
-.SearchBox-input {/* No es un seudoelemento estandar */
- color:white;
-	opacity: .6;
-}
-/* Chrome, Opera ySafari */
-.SearchBox-inpu {
-  color: white;
-}
-/* Firefox 19+ */
-.SearchBox-input {
-  color: white;
-}
-/* IE 10+ y Edge */
-.SearchBox-input {
-  color: white;
-}
-/* Firefox 18- */
-#formGroupExampleInput {
-  color: white;
-}
+        body {
+            color: var(--text-color) !important;
+            font-family: 'Noto Sans KR', sans-serif !important;
+        }
 
+        main {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
 
+        h1 {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
 
-.SearchBox {
-	--height: 5em;
-	display: flex;
-	width:750px;
-	border-radius: var(--height);
-	background-color: var(--primary-color);
-	height: var(--height);
-	margin-bottom:20px;
+        input,
+        button {
+            border: none;
+            background: none;
+            outline: 0;
+        }
 
-}
-	.SearchBox .SearchBox-input {
-		padding-left: 2em;
-		padding-right: 1em;
-		width:750px;
-	}
-	.SearchBox-input {
-		width: 0;
-		font-size: 1.2em;
-		color: black;
-		font-weight:bold;
-		transition: .45s;
-	}
-	.SearchBox-button {
-		display: flex;
-		border-radius: 50%;
-		width: var(--height);
-		height: var(--height);
-		background-color: var(--accent-color);
-		transition: .3s;
-	}
-	.SearchBox-button  {
-		transform: scale(.85);
-	}
-	.SearchBox-icon {
-		margin: auto;
-		color: #fff;
-	}
+        button {
+            cursor: pointer
+        }
+
+        .SearchBox-input { /* No es un seudoelemento estandar */
+            color: white;
+            opacity: .6;
+        }
+
+        /* Chrome, Opera ySafari */
+        .SearchBox-inpu {
+            color: white;
+        }
+
+        /* Firefox 19+ */
+        .SearchBox-input {
+            color: white;
+        }
+
+        /* IE 10+ y Edge */
+        .SearchBox-input {
+            color: white;
+        }
+
+        /* Firefox 18- */
+        #formGroupExampleInput {
+            color: white;
+        }
 
 
+        .SearchBox {
+            --height: 5em;
+            display: flex;
+            width: 750px;
+            border-radius: var(--height);
+            background-color: var(--primary-color);
+            height: var(--height);
+            margin-bottom: 20px;
+
+        }
+
+        .SearchBox .SearchBox-input {
+            padding-left: 2em;
+            padding-right: 2em;
+            width: 750px;
+        }
+
+        .SearchBox-input {
+            width: 0;
+            font-size: 1.2em;
+            color: black;
+            font-weight: bold;
+            transition: .45s;
+        }
+
+        .SearchBox-button {
+            display: flex;
+            border-radius: 50%;
+            width: 88px;;
+            height: var(--height);
+            background-color: var(--accent-color);
+            transition: .3s;
+        }
+
+        .SearchBox-button {
+            transform: scale(.85);
+        }
+
+        .SearchBox-icon {
+            margin: auto;
+            color: #fff;
+        }
 
 
+        .selector {
+            margin: auto !important;
 
-.selector{
-	 margin:auto !important;
+            margin-top: 30px;
+            position: relative;
+            padding-left: 8px;
+            width: 80%;
+            background-color: var(--smoke-white);
+            height: 80px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 9999px;
+            box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+        }
 
-	margin-top:30px;
-    position:relative;
-    padding-left:8px;
-    width:80%;
-    background-color:var(--smoke-white);
-    height:80px;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    border-radius:9999px;
-    box-shadow:0 0 16px rgba(0,0,0,.2);
-}
-.selecotr-item{
-    position:relative;
-    flex-basis:calc(70% / 3);
-    height:100%;
-    font-size:17px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.selector-item_radio{
-    appearance:none;
-    display:none;
-}
-.selector-item_label{
-    position:relative;
-    height:100%;
-    width:100%;
-    text-align:center;
+        .selecotr-item {
+            position: relative;
+            flex-basis: calc(70% / 3);
+            height: 100%;
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    border-radius:9999px;
-    line-height:450%;
-    font-weight:900;
-    transition-duration:.5s;
-    transition-property:transform, color, box-shadow;
-    transform:none;
-}
-.selector-item_radio:checked + .selector-item_label{
-    background-color:var(--blue);
-    color:var(--white);
-    box-shadow:0 0 4px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.5);
-    transform:translateY(-2px);
-}
-@media (max-width:480px) {
-	.selector{
-		width: 90%;
-	}
-}
-td:hover {
-color:#4169e1;
-font-weight:bold ;
-cursor:pointer ;
-}
-tr{
-/* justify-content: center; */
-align-items: center;
-border-radius: 10px;
-}
-td {
-/* width:100px ; */
-text-align:center;
-}
-table{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-background-color:#f1f3f5;
-width:1000px;
-height:1200px;
-border:none !important ;
-border-radius: 30px;
-}
+        .selector-item_radio {
+            appearance: none;
+            display: none;
+        }
 
-</style>
+        .selector-item_label {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+
+            border-radius: 9999px;
+            line-height: 450%;
+            font-weight: 900;
+            transition-duration: .5s;
+            transition-property: transform, color, box-shadow;
+            transform: none;
+        }
+
+        .selector-item_radio:checked + .selector-item_label {
+            background-color: var(--blue);
+            color: var(--white);
+            box-shadow: 0 0 4px rgba(0, 0, 0, .5), 0 2px 4px rgba(0, 0, 0, .5);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .selector {
+                width: 90%;
+            }
+        }
+
+        td:hover {
+            color: #4169e1;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        tr {
+            /* justify-content: center; */
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        td {
+            /* width:100px ; */
+            text-align: center;
+        }
+
+        table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            width: 1100px;
+            height: 1380px;
+            border: none !important;
+            border-radius: 30px;
+        }
+
+
+    </style>
 </head>
 <body>
-<div th:insert="/header" ></div>
+<div th:insert="/header"></div>
 <main>
-<br/>
-<div style="width:850px; text-align:center;">
-    <h1 style="font-weight:bold; font-size:60px;" >COCKTAIL SEARCH</h1>
-  	<hr />
-  	</div>
+    <br/>
+    <div style="width:850px; text-align:center;">
+        <h1 style="font-weight:bold; font-size:60px;">COCKTAIL SEARCH</h1>
+        <hr/>
+    </div>
     <br/>
     <form method="GET" action="/cocktail/search.do?query=" + ctName>
         <div class="SearchBox">
@@ -203,7 +225,7 @@ border-radius: 30px;
                 <i class="SearchBox-icon  material-icons">search</i>
             </button>
         </div>
-            <br/>
+        <br/>
         <div class="selector">
             <div class="selecotr-item">
                 <input type="radio" id="radio1" name="ctKindEng" class="selector-item_radio" value="smoody">
@@ -230,11 +252,30 @@ border-radius: 30px;
 
 
     <br/>
-    <div id="searchList" >
-        <th:block th:insert ="/search/list" th:with="ctName=${session.ctName}, ctKindEng=${session.ctKindEng}, page=${cocktailList}"></th:block>
-    </div>
 
+    <div>
+
+        <div id="searchList">
+            <th:block th:insert="/search/list"
+                      th:with="ctName=${session.ctName}, ctKindEng=${session.ctKindEng}, page=${cocktailList}"></th:block>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-right:30px;">
+            <div></div>
+            <th:block th:if="${session.loginUser==null}">
+                칵테일 추가는 로그인시 가능합니다.
+            </th:block>
+
+            <th:block th:unless="${session.loginUser==null}">
+
+                <button type="button" class="btn btn-info" onclick="location.href='cocktailInsert.do' ">칵테일 추가</button>
+
+            </th:block>
+
+        </div>
+        <div th:include="search/pageNav"></div>
+    </div>
 </main>
+
 </body>
 </html>
 
