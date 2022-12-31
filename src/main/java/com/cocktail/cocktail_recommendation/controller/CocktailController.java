@@ -144,8 +144,8 @@ public class CocktailController {
         if (!StringUtils.hasText(ctName) && ctKindEng == null) {
             Page<CocktailDto> noCtNameCtKindEng = newCocktailRepository.findAll(pageable);
             model.addAttribute("cocktailList", noCtNameCtKindEng);
-        } else if (StringUtils.hasText(ctName) && ctKindEng == null) {
-            Page<CocktailDto> noCtKindEng = newCocktailRepository.findByCtNameContaining(ctName, pageable);
+        } else if (StringUtils.hasText(ctName) || ctKindEng == null) {
+            Page<CocktailDto> noCtKindEng = newCocktailRepository.findByCtNameContaining(ctName,pageable);
             if (noCtKindEng.isEmpty()) {
                 resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
@@ -294,6 +294,5 @@ public class CocktailController {
             return "redirect:/cocktail/list.do";
 
         }
-
     }
 }
