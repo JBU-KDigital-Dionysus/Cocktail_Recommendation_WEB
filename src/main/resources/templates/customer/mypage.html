@@ -6,40 +6,108 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+<style>
+	.container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin: 45px 0 45px 0;
+        align-items: center;
+    }
+    .nick {
+		color:#03a9f4;
+		font-weight:900;
+		font-size:50px;
+	}
+	.title {
+		font-size:30px; 
+		font-weight:600;
+	}
+	.members{
+		background: #f1f3f5;
+	}
+	.memberimg{
+		width: 275px;
+		height: 275px;
+		background-image: url("/img/member.png");
+		background-size: contain;
+		border-radius: 50%;
+	}
+	.mbtn1{
+		text-align: right;
+	}
+	.mbtn2{
+		text-align: center;
+	}
+	.members{
+		display: flex;
+		align-items: center;
+	}
+	.memberimg{
+		margin: 35px 75px 35px 68px;
+	}
+	.memberinfo{
+		margin: 20px;
+	}
+	#mname{
+		font-size: 25px;
+    	font-weight: 500;
+	}
+	#minfo{
+		font-size: 19px;
+	}
+</style>
 </head>
 <body>
 <header th:include="header"></header>
-<table>
-    <tr>
-        <td>
-            <th:block th:text="${customer.get().cstId}"></th:block>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <th:block th:text="${customer.get().cstNickname}"></th:block>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <th:block th:text="${customer.get().cstEmail}"></th:block>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <th:block th:text="${customer.get().cstFlavor}"></th:block>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <th:block th:text="${customer.get().cstYear}"></th:block>
-        </td>
-    </tr>
-</table>
-<a class="btn btn-primary" href="/customer/update.do">회원 수정</a>
-<a class="btn btn-danger" data-bs-toggle="modal" th:href="'#cstId'+${customer.get().cstId}">
-    회원 삭제
-</a>
+	<div class="container">
+	    <div id="hot-wrapper">
+	        <div class="widget-title">
+	            <h3 class="title">
+	                <span class="nick" th:text="${customer.get().cstNickname}" ></span> 님 마이페이지
+	            </h3>
+	        </div>
+	    </div>
+	</div>
+	
+	<hr/>
+	<br>
+	<br>
+	
+	<div class="members">
+		<div class="memberimg"></div>
+		<div class="memberinfo">
+			<!-- <p id="mname">
+				<strong>ID </strong>
+            </p> -->
+			<p id="minfo">
+				<img src="/img/id.png" style="width: 50px; height: 50px;">  <th:block th:text="${customer.get().cstId}"></th:block>
+            </p>
+            <!-- <p id="mname">
+				<strong> E-MAIL </strong>
+            </p> -->
+            <p id="minfo">
+				<img src="/img/email.png" style="width: 50px; height: 50px;">  <th:block th:text="${customer.get().cstEmail}"></th:block>
+            </p>
+		</div>		
+	</div>
+	
+	<br>
+	<div class="mbtn1">
+	    <a class="btn btn-primary" href="/customer/update.do">회원 수정</a>
+	</div>
+
+	<hr/>
+	<div class="mbtn2">
+		<a class="btn btn-danger" data-bs-toggle="modal" th:href="'#cstId'+${customer.get().cstId}">
+		    회원 삭제
+		</a>
+	</div>
+
+
 <!-- Modal -->
 <div class="modal fade" th:id="'cstId'+${customer.get().cstId}" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">

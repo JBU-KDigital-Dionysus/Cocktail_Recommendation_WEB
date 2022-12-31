@@ -74,7 +74,7 @@ button {cursor: pointer}
 }
 	.SearchBox .SearchBox-input {
 		padding-left: 2em;
-		padding-right: 1em;
+		padding-right: 2em;
 		width:750px;
 	}
 	.SearchBox-input {
@@ -87,7 +87,7 @@ button {cursor: pointer}
 	.SearchBox-button {
 		display: flex;
 		border-radius: 50%;
-		width: var(--height);
+		width: 88px;;
 		height: var(--height);
 		background-color: var(--accent-color);
 		transition: .3s;
@@ -175,9 +175,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 height: 100vh;
-background-color:#f1f3f5;
-width:1000px; 
-height:1200px;
+background-color: white;
+width:1100px; 
+height:1380px;
 border:none !important ; 
 border-radius: 30px;
 }
@@ -235,6 +235,21 @@ border-radius: 30px;
 
     <div>
         <th:block th:insert ="/cocktail/list"></th:block>
+       
+     <div style="display: flex; justify-content: space-between; margin-right:30px;">
+     <div></div>
+                <th:block th:if="${session.loginUser==null}">
+                    칵테일 추가는 로그인시 가능합니다. 
+                </th:block>
+
+                <th:block th:unless="${session.loginUser==null}">
+       
+       	 <button type="button" class="btn btn-info" onclick="location.href='cocktailInsert.do' ">칵테일 추가</button>
+		
+                </th:block>
+
+            </div>
+   
         <div th:include="cocktail/pageNav"></div>
     </div>
 </main>

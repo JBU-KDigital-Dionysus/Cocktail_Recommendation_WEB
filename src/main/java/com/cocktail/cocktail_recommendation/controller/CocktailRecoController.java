@@ -63,6 +63,9 @@ public class CocktailRecoController {
     @GetMapping("/cocktailreco3")
     public void recommandtion3() {
     }
+    @GetMapping("/cocktailreco4")
+    public void recommandtio4() {
+    }
 
     @PostMapping("/cocktailreco3")
     public String recommandtion3(@RequestParam("SEASON") String ctSeason, @RequestParam("TIME") String ctTime, @RequestParam("CERTIFIED") String ctCertified, @RequestParam("ctAlcohol") String ctAlcohol, HttpSession session) {
