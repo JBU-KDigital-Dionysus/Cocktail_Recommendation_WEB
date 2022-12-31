@@ -26,8 +26,10 @@ public class CocktailRecoController {
     private CocktailFlavorRepository cocktailFlavorRepository;
 
     @GetMapping("/cocktailreco")
-    public void recommandtion() {
+    public void recommandtion(HttpSession session) {
+        session.removeAttribute("cocktailList");
     }
+
 
     @GetMapping("/cocktailreco1")
     public void recommandtion1() {
