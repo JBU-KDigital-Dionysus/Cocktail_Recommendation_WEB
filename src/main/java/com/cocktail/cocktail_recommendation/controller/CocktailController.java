@@ -44,6 +44,7 @@ public class CocktailController {
 
     @Autowired
     CocktailRepository newCocktailRepository;
+    
 
     @Autowired
     CustmerLikeRepository likeRepository;
@@ -141,11 +142,11 @@ public class CocktailController {
         session.removeAttribute("ctKindEng");
         final int ROWS = 20;
         Pageable pageable = PageRequest.of(page, ROWS, Sort.by("ctNo").ascending());
-        if (!StringUtils.hasText(ctName) && ctKindEng == null) {
-            Page<CocktailDto> noCtNameCtKindEng = newCocktailRepository.findAll(pageable);
-            model.addAttribute("cocktailList", noCtNameCtKindEng);
-        } else if (StringUtils.hasText(ctName) || ctKindEng == null) {
-            Page<CocktailDto> noCtKindEng = newCocktailRepository.findByCtNameContaining(ctName,pageable);
+        if (!StringUtils.hasText(ctName) && ctKindEng.equals(".")) {
+            return "redirect:/cocktail/list.do";
+        } else if (StringUtils.hasText(ctName) && ctKindEng.equals(".")) {
+            ctKindEng = ".";
+            Page<CocktailDto> noCtKindEng = newCocktailRepository.findByCtNameContaining(ctName, pageable);
             if (noCtKindEng.isEmpty()) {
                 resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
@@ -153,11 +154,14 @@ public class CocktailController {
                 out.flush();
             } else {
                 session.setAttribute("ctName", ctName);
+                model.addAttribute("ctKindEng", ctKindEng);
                 model.addAttribute("cocktailList", noCtKindEng);
             }
-        } else if (!StringUtils.hasText(ctName) && ctKindEng != null) {
+        }
+        else if (!StringUtils.hasText(ctName) && ctKindEng != null) {
             Page<CocktailDto> noCtName = newCocktailRepository.findByCtKindEng(ctKindEng, pageable);
             session.setAttribute("ctKindEng", ctKindEng);
+            model.addAttribute("ctKindEng", ctKindEng);
             model.addAttribute("cocktailList", noCtName);
 
         } else {
@@ -171,7 +175,9 @@ public class CocktailController {
             } else {
                 session.setAttribute("ctName", ctName);
                 session.setAttribute("ctKindEng", ctKindEng);
+                model.addAttribute("ctKindEng", ctKindEng);
                 model.addAttribute("cocktailList", allYes);
+                System.out.println(allYes.getContent().get(0).getCtKindEng());
             }
         }
 
