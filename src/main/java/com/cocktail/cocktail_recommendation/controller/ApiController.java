@@ -23,8 +23,11 @@ public class ApiController {
     @Value("${uploadFilePath}")
     public String SAVE_PATH;
 
-    @Value("${pythonURL}")
-    public String pythonURL;
+    @Value("${flavorBasedReco}")
+    public String flavorBasedReco;
+
+    @Value("${likedBasedReco}")
+    public String likedBasedReco;
 
     @Value("${debugMode}")
     public boolean debugMode;
@@ -39,9 +42,35 @@ public class ApiController {
             String attrName = enumStr.nextElement();
             dbSrvJson.put(attrName, session.getAttribute(attrName));
         }
-//		JSONObject result = getRecommendResult(pythonURL, "POST");
-//		resultMap.put("result", result.toString());
-        JSONObject result_json = getRecommendResult(pythonURL, dbSrvJson, "POST");
+        JSONObject result_json = getRecommendResult(flavorBasedReco, dbSrvJson, "POST");
+        ObjectMapper mapper = new ObjectMapper();
+        String json_str = result_json.toJSONString();
+        Integer recommendedCtId = 0;
+        try{
+            Map map = mapper.readValue(json_str, Map.class);
+            map = (Map)map.get("data");
+            recommendedCtId = (Integer)map.get("reco_0");
+            session.setAttribute("reoCocktail", map);
+            List<Integer> valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
+            session.setAttribute("cocktailList", valueList);
+            System.out.println(valueList);
+            System.out.println(valueList.getClass());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        redirectAttributes.addAttribute("ctNo", recommendedCtId);
+        return "redirect:/cocktail/detail.do";
+    }
+
+    @GetMapping(value = "/likeRecommend")
+    public String likeRecommend(HttpSession session, RedirectAttributes redirectAttributes) {
+        JSONObject dbSrvJson = new JSONObject();
+        Enumeration<String> enumStr = session.getAttributeNames();
+        while (enumStr.hasMoreElements()) {
+            String attrName = enumStr.nextElement();
+            dbSrvJson.put(attrName, session.getAttribute(attrName));
+        }
+        JSONObject result_json = getRecommendResult(likedBasedReco, dbSrvJson, "POST");
         ObjectMapper mapper = new ObjectMapper();
         String json_str = result_json.toJSONString();
         Integer recommendedCtId = 0;
@@ -64,10 +93,8 @@ public class ApiController {
 
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
         JSONObject responseJson = new JSONObject();
-
         try {
-            URL url = new URL("http://localhost:3000/apiTest");
-//            URL url = new URL(pythonUrl);
+            URL url = new URL(pythonUrl);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
             httpConn.setRequestMethod("POST");
             httpConn.setRequestMethod(requestMethod);
