@@ -80,7 +80,7 @@ font-weight:600;
 	
     justify-content: space-evenly;
 	margin-top: 10px;
-	line-height: 40px;
+	line-height: 36px;
 	font-size: 19px;
 }
 
@@ -191,4 +191,3 @@ font-weight:600;
 .list-group {
 	margin-bottom: 60px;
 }
-
