@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,7 +54,6 @@ public class ApiController {
             List<Integer> valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
             session.setAttribute("cocktailList", valueList);
             System.out.println(valueList);
-            System.out.println(valueList.getClass());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -61,12 +61,11 @@ public class ApiController {
         return "redirect:/cocktail/detail.do";
     }
 
-
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
         JSONObject responseJson = new JSONObject();
 
         try {
-            URL url = new URL("http://localhost:3000/apiTest");
+            URL url = new URL("http://localhost:5000/apiTest");
 //            URL url = new URL(pythonUrl);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
             httpConn.setRequestMethod("POST");
