@@ -11,6 +11,7 @@ tbody{
     row-gap: 30px;
     column-gap: 55px;
     margin: 30px;
+    justify-content: space-around;
 }
 
 .id{
