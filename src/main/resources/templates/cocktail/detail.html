@@ -9,20 +9,13 @@
             rel="stylesheet">
 </head>
 <style>
-    @import
-    url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
 
-    @import
-    url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&display=swap')
-    ;
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&display=swap');
 
-    @import
-    url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-    ;
+    @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-    @import
-    url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap')
-    ;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap');
 
     body {
         font-family: 'Noto Sans KR', sans-serif !important;
@@ -69,7 +62,7 @@
                                 src="/img/icon/KakaoTalk_20221227_163339426_01.png">
                         </a> <a id="clip-btn" href="javascript:clipboardShare()"
                                 style="display: inline-block"> <img
-                            src="/img/icon/KakaoTalk_20221227_163339426.png" />
+                            src="/img/icon/KakaoTalk_20221227_163339426.png"/>
                     </a>
                     </div>
                 </div>
@@ -167,18 +160,19 @@
 
             <div class="TagBox">
                 <ul class="tags">
-                    <li><a href="#" class="tag" th:text="${cocktail.ctSeason}"></a></li>
-                    <li><a href="#" class="tag" th:text="${cocktail.ctTime}"></a></li>
-                    <li><a href="#" class="tag" th:text="${cocktail.ctCertified}"></a></li>
+                    <li><p class="tag" th:text="${cocktail.ctSeason}"></p></li>
+                    <li><p class="tag" th:text="${cocktail.ctTime}"></p></li>
+                    <li><p class="tag" th:text="${cocktail.ctCertified}"></p></li>
                 </ul>
 
             </div>
-
-
+            <th:block th:unless="${session.cocktailList == null}">
+                <a class="btn btn-primary" th:onclick="location.href='detail.do?ctNo=[[${cocktail.ctNo}]]'">다음 추천</a>
+            </th:block>
         </div>
     </div>
-    <h2 class="eng">COKTAIL RECIPE</h2>
-    <hr />
+    <h2 class="eng">COCKTAIL RECIPE</h2>
+    <hr/>
     <div class="youtube">
 
         <iframe width="730" height="415"
@@ -201,7 +195,7 @@
          <span class="mtitle " th:text="${cocktail.ctName}"
                style="color: #03a9f4;"></span> 에 대한 다양한 의견을 공유해주세요!
     </h2>
-    <hr />
+    <hr/>
     <div class='replyinsert'>
         <th:block th:if="${session.loginUser!=null}">
             <form name="replyInserForm" class="card" action="/reply/insert.do"
@@ -239,8 +233,6 @@
     </div>
 
 
-
-
     <h2 class="eng">REPLY LIST</h2>
     <div class="list-group">
         <th:block th:each="reply:${replyList}">
@@ -248,7 +240,8 @@
                  class="list-group-item list-group-item-action py-3"
                  aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <span></span> <span class="mb-1" th:text="${reply.getCustomer().getCstNickname()} + '(' + ${reply.getCustomer().cstId} + ')'">
+                    <span></span> <span class="mb-1"
+                                        th:text="${reply.getCustomer().getCstNickname()} + '(' + ${reply.getCustomer().cstId} + ')'">
                   </span>
 
                 </div>
@@ -268,11 +261,10 @@
 
 </div>
 
-<br />
-<br />
-<br />
-<br />
-
+<br/>
+<br/>
+<br/>
+<br/>
 
 <footer th:insert="/footer"></footer>
 </body>
@@ -282,6 +274,7 @@
     function joinform_check() {
         document.userInsertForm.submit(); //유효성 검사의 포인트
     }
+
     let ctNo = [[${cocktail.ctNo}]]
     // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('d4f0102e4d33aadc5ba87bd59e9af5cd');

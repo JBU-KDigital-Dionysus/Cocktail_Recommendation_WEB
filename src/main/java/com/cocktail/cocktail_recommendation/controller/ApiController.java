@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
@@ -48,19 +49,24 @@ public class ApiController {
             Map map = mapper.readValue(json_str, Map.class);
             map = (Map)map.get("data");
             recommendedCtId = (Integer)map.get("reco_0");
+            session.setAttribute("reoCocktail", map);
+            List<Integer> valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
+            session.setAttribute("cocktailList", valueList);
+            System.out.println(valueList);
+            System.out.println(valueList.getClass());
         }catch (Exception e){
             e.printStackTrace();
         }
-
         redirectAttributes.addAttribute("ctNo", recommendedCtId);
         return "redirect:/cocktail/detail.do";
     }
+
 
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
         JSONObject responseJson = new JSONObject();
 
         try {
-            URL url = new URL("http://localhost:5000/apiTest");
+            URL url = new URL("http://localhost:3000/apiTest");
 //            URL url = new URL(pythonUrl);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
             httpConn.setRequestMethod("POST");
