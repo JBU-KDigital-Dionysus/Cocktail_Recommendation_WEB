@@ -298,7 +298,7 @@ public class CocktailController {
         } else {
             ingRepository.save(ingredto);
             return "redirect:/cocktail/list.do";
-
         }
     }
+
 }
