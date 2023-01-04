@@ -1,8 +1,11 @@
 package com.cocktail.cocktail_recommendation.controller;
 
+import com.cocktail.cocktail_recommendation.dto.CocktailDto;
 import com.cocktail.cocktail_recommendation.dto.Customer;
+import com.cocktail.cocktail_recommendation.repository.CocktailRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,37 +24,48 @@ import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    CocktailRepository cocktailRepository;
+
     @Value("${likedBasedReco}")
     public String likedBasedReco;
 
     @GetMapping("/")
-    public String home(@SessionAttribute(required = false) Customer loginUser, Model model){
+    public String home(@SessionAttribute(required = false) Customer loginUser, Model model) {
         String cstId = null;
-        if(loginUser != null){
-            List<Integer> likedBasedRecoResult = likeRecommend(loginUser);
+
+        if (loginUser != null) {
+            List<CocktailDto> likedBasedRecoResult = likeRecommend(loginUser);
             model.addAttribute("likedBaseCts", likedBasedRecoResult);
             System.out.println(likedBasedRecoResult);
+
         }
 
         return "index";
     }
 
-    public List<Integer> likeRecommend(Customer loginUser) {
+    public List<CocktailDto> likeRecommend(Customer loginUser) {
         System.out.println("Request likeRecommend");
         List<Integer> valueList = null;
+        List<CocktailDto> cosineList = new ArrayList<>();
         JSONObject dbSrvJson = new JSONObject();
         dbSrvJson.put("cstId", loginUser.getCstId());
         JSONObject result_json = getRecommendResult(likedBasedReco, dbSrvJson, "POST");
         ObjectMapper mapper = new ObjectMapper();
         String json_str = result_json.toJSONString();
-        try{
+        try {
             Map map = mapper.readValue(json_str, Map.class);
-            map = (Map)map.get("data");
+            map = (Map) map.get("data");
             valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
-        }catch (Exception e){
+            for (int i = 0; i < valueList.size(); i++) {
+                CocktailDto cocktail = cocktailRepository.getByCtNo(valueList.get(i));
+                cosineList.add(cocktail);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return valueList;
+        return cosineList;
     }
 
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
