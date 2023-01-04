@@ -1,60 +1,58 @@
 package com.cocktail.cocktail_recommendation.controller;
 
+import com.cocktail.cocktail_recommendation.dto.Customer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.HttpSession;
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 @Controller
-public class ApiController {
+public class HomeController {
+    @Value("${likedBasedReco}")
+    public String likedBasedReco;
 
-    @Value("${uploadFilePath}")
-    public String SAVE_PATH;
-
-    @Value("${flavorBasedReco}")
-    public String flavorBasedReco;
-
-
-
-    @GetMapping(value = "/CONT/upload")
-    public String imgUpload(HttpSession session, RedirectAttributes redirectAttributes) {
-        JSONObject dbSrvJson = new JSONObject();
-        Enumeration<String> enumStr = session.getAttributeNames();
-        while (enumStr.hasMoreElements()) {
-            String attrName = enumStr.nextElement();
-            dbSrvJson.put(attrName, session.getAttribute(attrName));
+    @GetMapping("/")
+    public String home(@SessionAttribute(required = false) Customer loginUser, Model model){
+        String cstId = null;
+        if(loginUser != null){
+            List<Integer> likedBasedRecoResult = likeRecommend(loginUser);
+            model.addAttribute("likedBaseCts", likedBasedRecoResult);
+            System.out.println(likedBasedRecoResult);
         }
-        JSONObject result_json = getRecommendResult(flavorBasedReco, dbSrvJson, "POST");
+
+        return "index";
+    }
+
+    public List<Integer> likeRecommend(Customer loginUser) {
+        System.out.println("Request likeRecommend");
+        List<Integer> valueList = null;
+        JSONObject dbSrvJson = new JSONObject();
+        dbSrvJson.put("cstId", loginUser.getCstId());
+        JSONObject result_json = getRecommendResult(likedBasedReco, dbSrvJson, "POST");
         ObjectMapper mapper = new ObjectMapper();
         String json_str = result_json.toJSONString();
-        Integer recommendedCtId = 0;
         try{
             Map map = mapper.readValue(json_str, Map.class);
             map = (Map)map.get("data");
-            recommendedCtId = (Integer)map.get("reco_0");
-            session.setAttribute("reoCocktail", map);
-            List<Integer> valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
-            session.setAttribute("cocktailList", valueList);
-            System.out.println(valueList);
-            System.out.println(valueList.getClass());
+            valueList = (List<Integer>) map.values().stream().collect(Collectors.toCollection(ArrayList::new));
         }catch (Exception e){
             e.printStackTrace();
         }
-        redirectAttributes.addAttribute("ctNo", recommendedCtId);
-        return "redirect:/cocktail/detail.do";
+        return valueList;
     }
-
 
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
         JSONObject responseJson = new JSONObject();
