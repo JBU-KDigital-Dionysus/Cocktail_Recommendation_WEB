@@ -42,6 +42,8 @@ public class CocktailDto {
     private String ctRecipe;
     @Column(name = "CT_RECIPE_LINK")
     private String ctRecipeLink;
+    @Column(name = "CT_VIEW")
+    private String ctView;
     
     
     @OneToOne
