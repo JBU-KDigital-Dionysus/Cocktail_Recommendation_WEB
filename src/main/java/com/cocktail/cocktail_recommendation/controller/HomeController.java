@@ -75,7 +75,6 @@ public class HomeController {
         try {
             URL url = new URL(pythonUrl);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-            httpConn.setRequestMethod("POST");
             httpConn.setRequestMethod(requestMethod);
             httpConn.setDoOutput(true);
             httpConn.setDoInput(true);
