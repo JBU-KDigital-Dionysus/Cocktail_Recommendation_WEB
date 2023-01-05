@@ -35,10 +35,20 @@ public class ApiController {
             String attrName = enumStr.nextElement();
             dbSrvJson.put(attrName, session.getAttribute(attrName));
         }
+
+        try{
+            dbSrvJson.remove("loginUser");
+            dbSrvJson.remove("redirectPage");
+            dbSrvJson.remove("recoCocktail");
+        }catch (Exception e){
+            System.out.println("지울 세션 없음");
+        }
+
         JSONObject result_json = getRecommendResult(flavorBasedReco, dbSrvJson, "POST");
         ObjectMapper mapper = new ObjectMapper();
         String json_str = result_json.toJSONString();
         Integer recommendedCtId = 0;
+        System.out.println("json_str: " + json_str);
         try{
             Map map = mapper.readValue(json_str, Map.class);
             map = (Map)map.get("data");
@@ -58,10 +68,10 @@ public class ApiController {
 
     public JSONObject getRecommendResult(String pythonUrl, JSONObject pflavors, String requestMethod) {
         JSONObject responseJson = new JSONObject();
+        System.out.println("pflavors: " + pflavors);
         try {
             URL url = new URL(pythonUrl);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-            httpConn.setRequestMethod("POST");
             httpConn.setRequestMethod(requestMethod);
             httpConn.setDoOutput(true);
             httpConn.setDoInput(true);
