@@ -15,5 +15,5 @@ public interface CocktailRepository extends JpaRepository<CocktailDto, Integer> 
 
     CocktailDto getByCtNo(int ctNo);
 
-    List<CocktailDto> findTop10ByOrderByCtViewDesc();
+    List<CocktailDto> findTop5ByOrderByCtViewDesc();
 }

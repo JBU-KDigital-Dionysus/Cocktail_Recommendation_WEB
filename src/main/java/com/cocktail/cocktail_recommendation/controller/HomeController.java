@@ -34,7 +34,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(@SessionAttribute(required = false) Customer loginUser, Model model) {
         String cstId = null;
-        List<CocktailDto> topTenList = cocktailRepository.findTop10ByOrderByCtViewDesc();
+        List<CocktailDto> topTenList = cocktailRepository.findTop5ByOrderByCtViewDesc();
         System.out.println(topTenList);
         model.addAttribute("topTen", topTenList);
         if (loginUser != null) {
