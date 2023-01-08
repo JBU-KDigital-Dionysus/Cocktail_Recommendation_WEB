@@ -271,9 +271,10 @@
 <br/>
 <br/>
 <!--        여기 부터가 찜과 유사한거 시작        -->
+
 <div id="hot-wrapper" th:if="${session.loginUser != null}">
     <div class="widget-title">
-        <h3 class="title">
+        <h3 class="title" th:unless="${likedBaseCts.isEmpty()}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                  viewBox="0 0 24 24">
                 <path
